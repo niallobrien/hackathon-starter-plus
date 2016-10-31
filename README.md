@@ -80,11 +80,13 @@ Features
 - **Local Authentication** using Email and Password
 - **OAuth 1.0a Authentication** via Twitter
 - **OAuth 2.0 Authentication** via Facebook, Google, GitHub, LinkedIn, Instagram
+- Webpack asset pipeline for client-side JS
 - Flash notifications
 - MVC Project Structure
 - Node.js clusters support
 - Sass stylesheets (auto-compiled via middleware)
 - Bootstrap 3 + Extra Themes
+- Socket.io
 - Contact Form (powered by Mailgun, Sendgrid or Mandrill)
 - **Account Management**
  - Gravatar
@@ -132,7 +134,10 @@ npm install
 # Or, if you prefer to use `yarn` instead of `npm`
 yarn install
 
-# Then simply start your app
+# To compile the client-side JS and watch for changes
+npm run dev
+
+# Then simply start your app (in another terminal)
 node app.js
 ```
 
