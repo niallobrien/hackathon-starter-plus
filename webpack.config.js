@@ -12,7 +12,7 @@ var mainPath = path.resolve(__dirname, 'assets', 'scripts', 'main.js');
 var config = {
   devtool: 'eval',
   entry: {
-    vendor: ['jquery', 'simple-pjax'],
+    vendor: ['jquery', 'bootstrap-sass', 'simple-pjax'],
     main: mainPath
   },
   output: {
