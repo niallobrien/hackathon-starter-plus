@@ -525,19 +525,6 @@ and a new database step-by-step with mLab.
 ### Why Pug (Jade) instead of Handlebars?
 When I first started this project I didn't have any experience with Handlebars. Since then I have worked on Ember.js apps and got myself familiar with the Handlebars syntax. While it is true Handlebars is easier, because it looks like good old HTML, I have no regrets picking Jade over Handlebars. First off, it's the default template engine in Express, so someone who has built Express apps in the past already knows it. Secondly, I find `extends` and `block` to be indispensable, which as far as I know, Handlebars does not have out of the box. And lastly, subjectively speaking, Jade looks much cleaner and shorter than Handlebars, or any non-HAML style for that matter.
 
-### Why do you have all routes defined in app.js?
-For the sake of simplicity. While there might be a better approach,
-such as passing `app` context to each controller as outlined in this
-[blog](http://timstermatic.github.io/blog/2013/08/17/a-simple-mvc-framework-with-node-and-express/),
-I find such style to be confusing for beginners.
-It took me a long time to grasp the concept of `exports` and `module.exports`,
-let alone having a global `app` reference in other files.
-That to me is a backward thinking.
-The `app.js` is the "heart of the app", it should be the one referencing
-models, routes, controllers, etc.
-When working solo on small projects I actually prefer to have everything inside `app.js` as is the case with [this]((https://github.com/sahat/ember-sass-express-starter/blob/master/app.js))
-REST API server.
-
 ### I don't need a sticky footer, can I delete it?
 Absolutely. But unlike a regular footer there is a bit more work involved.
 First, delete `#wrap` and `#footer` ID selectors and `html, body { height: 100%; }`
@@ -693,7 +680,7 @@ or send a pull request if you  would like to include something that I missed.
 <hr>
 
 ### How do I create a new page?
-A more correct way to be to say "How do I create a new route". The main file `app.js` contains all the routes.
+A more correct way to be to say "How do I create a new route". The routes file `config/routes.js` contains all the routes.
 Each route has a callback function associated with it. Sometimes you will see 3 or more arguments
 to routes. In cases like that, the first argument is still a URL string, while middle arguments
 are what's called middleware. Think of middleware as a door. If this door prevents you from
@@ -878,7 +865,7 @@ const io = require('socket.io')(server);
 ```
 
 I like to have the following code organization in `app.js` (from top to bottom): module dependencies,
-import controllers, import configs, connect to database, express configuration, routes,
+import controllers, import configs, connect to database, express configuration, routes (defined in `config/routes.js`),
 start the server, socket.io stuff. That way I always know where to look for things.
 
 Add the following code at the end of `app.js`:
