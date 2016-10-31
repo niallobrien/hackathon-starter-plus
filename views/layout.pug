@@ -19,9 +19,15 @@ html
 
     include partials/footer
 
-    script(src='/js/lib/jquery-2.2.4.min.js')
-    script(src='/js/lib/bootstrap.min.js')
-    script(src='/js/main.js')
+    script(type='text/javascript', src=rev('vendor.js'))
+    script(src='/socket.io/socket.io.js')
+    script(type='text/javascript', src=rev('main.js'))
+    script.
+      var socket = io.connect(window.location.href);
+      socket.on('greet', function (data) {
+        console.log(data);
+        socket.emit('respond', { message: 'Hey there, server!' });
+      });
 
     // Google Analytics: change UA-XXXXX-X to be your site's ID
     script.
