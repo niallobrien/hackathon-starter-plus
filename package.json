@@ -7,7 +7,7 @@
   },
   "scripts": {
     "start": "node app.js",
-    "dev": "webpack --module-bind pug --progress --colors --watch -d",
+    "dev": "rm public/js/manifest.json webpack --module-bind pug --progress --colors --watch -d",
     "build": "rm -rf public/js/*.js && rm -rf public/js/*.map && webpack --config webpack.production.config.js --progress --colors -p",
     "test": "mocha --reporter spec --timeout 5000"
   },
