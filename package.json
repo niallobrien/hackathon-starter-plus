@@ -83,6 +83,10 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "eslint": "^3.10.2",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1",
     "mocha": "^3.0.2",
     "supertest": "^2.0.0"
   },
