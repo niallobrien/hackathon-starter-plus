@@ -1,15 +1,15 @@
 // If you want to move Bootstrap from the public directory & integrate with Webpack:
 // https://github.com/AngularClass/angular2-webpack-starter/issues/696#issuecomment-227786637
-var webpack = require('webpack');
-var ManifestPlugin = require('webpack-manifest-plugin');
-var ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
-var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-var path = require('path');
+const webpack = require('webpack')
+const ManifestPlugin = require('webpack-manifest-plugin')
+const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin')
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+const path = require('path')
 
-var nodeModulesPath = path.resolve(__dirname, 'node_modules');
-var buildPath = path.resolve(__dirname, 'public', 'js');
-var mainPath = path.resolve(__dirname, 'assets', 'scripts', 'main.js');
-var config = {
+const nodeModulesPath = path.resolve(__dirname, 'node_modules')
+const buildPath = path.resolve(__dirname, 'public', 'js')
+const mainPath = path.resolve(__dirname, 'assets', 'scripts', 'main.js')
+const config = {
   devtool: 'eval',
   entry: {
     vendor: ['jquery', 'bootstrap-sass', 'chart.js', 'simple-pjax'],
@@ -30,7 +30,7 @@ var config = {
           plugins: ['transform-runtime'],
           presets: ['es2015']
         }
-       },
+      },
       { test: /vendor\/.+\.(jsx|js)$/, loader: 'imports?jQuery=jquery,$=jquery,this=>window' },
       {
         test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
@@ -87,6 +87,6 @@ var config = {
     )
 
   ]
-};
+}
 
-module.exports = config;
+module.exports = config
