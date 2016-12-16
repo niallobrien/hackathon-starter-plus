@@ -17,7 +17,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const expressValidator = require('express-validator');
-const expressStatusMonitor = require('express-status-monitor');
+// const expressStatusMonitor = require('express-status-monitor');
 const sass = require('node-sass-middleware');
 const multer = require('multer');
 const upload = multer({ dest: path.join(__dirname, 'uploads') });
@@ -142,7 +142,7 @@ io.on('connection', function(socket) {
  */
 server.listen(app.get('port'), () => {
   const host = (app.get('env') === 'development') ? 'http://localhost:%d' : 'port %d';
-console.log('%s Express server listening on ' + host + ' in %s mode.', chalk.green('✓'), app.get('port'), app.get('env'));
+  console.log('%s Express server listening on ' + host + ' in %s mode.', chalk.green('✓'), app.get('port'), app.get('env'));
 });
 
 module.exports = app;
