@@ -60,7 +60,7 @@ app.use(manifest({
   manifest: './public/js/manifest.json',
   prepend: '/js'
 }));
-app.use(expressStatusMonitor());
+// app.use(expressStatusMonitor({ websocket: io, port: app.get('port') }));
 app.use(compression());
 app.use(sass({
   src: path.join(__dirname, 'public'),
