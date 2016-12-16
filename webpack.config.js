@@ -31,7 +31,10 @@ const config = {
           presets: ['es2015']
         }
       },
-      { test: /vendor\/.+\.(jsx|js)$/, loader: 'imports?jQuery=jquery,$=jquery,this=>window' },
+      {
+        test: /vendor\/.+\.(jsx|js)$/,
+        loader: 'imports?jQuery=jquery,$=jquery,this=>window'
+      },
       {
         test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'url?limit=10000&mimetype=application/font-woff&name=fonts/[name].[ext]'
@@ -85,7 +88,6 @@ const config = {
       },
       { reload: true }
     )
-
   ]
 }
 

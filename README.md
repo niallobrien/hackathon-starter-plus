@@ -158,8 +158,11 @@ Hackathon Starter includes a `yarn.lock` file by default and as project dependen
 To upgrade your local dependencies using Yarn, simply run `yarn upgrade`. This will update all dependencies to their latest version based on the [version range](https://docs.npmjs.com/getting-started/semantic-versioning#semver-for-consumers) specified in the `package.json` file. The yarn.lock file will be recreated as well.
 For further information, please see the official documention for [managing dependencies](https://yarnpkg.com/en/docs/managing-dependencies) and [upgrading dependencies](https://yarnpkg.com/en/docs/cli/upgrade). This [Yarn vs NPM](https://www.sitepoint.com/yarn-vs-npm/) article by SitePoint also has some very useful information.
 
+The following was added to the default Hackathon Starter project:
+`yarn add assets-webpack-plugin babel-core babel-loader babel-plugin-transform-runtime babel-preset-es2015 babel-preset-stage-0 bootstrap-sass browser-syn browser-sync-webpack-plugin chunk-manifest-webpack-plugin express-rev jquery simple-pjax socket.io webpack webpack-dev-middleware webpack-dev-server webpack-manifest-plugin webpack-md5-hash`
+
 Obtaining API Keys
-------------------
+-----------------
 
 To use any of the included APIs or OAuth authentication methods, you will need
 to obtain appropriate credentials: Client ID, Client Secret, API Key, or

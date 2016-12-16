@@ -45,9 +45,12 @@ const io = require('socket.io')(server);
  */
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI || process.env.MONGOLAB_URI);
+mongoose.connection.on('connected', () => {
+  console.log('%s MongoDB connection established!', chalk.green('✓'));
+});
 mongoose.connection.on('error', () => {
   console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'));
-  process.exit();
+process.exit();
 });
 
 /**
@@ -137,9 +140,9 @@ io.on('connection', function(socket) {
 /**
  * Start Express server.
  */
-app.listen(app.get('port'), () => {
-  console.log('%s App is running at http://localhost:%d in %s mode', chalk.green('✓'), app.get('port'), app.get('env')); 
-  console.log('  Press CTRL-C to stop\n');
+server.listen(app.get('port'), () => {
+  const host = (app.get('env') === 'development') ? 'http://localhost:%d' : 'port %d';
+console.log('%s Express server listening on ' + host + ' in %s mode.', chalk.green('✓'), app.get('port'), app.get('env'));
 });
 
 module.exports = app;
