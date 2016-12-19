@@ -159,7 +159,7 @@ To upgrade your local dependencies using Yarn, simply run `yarn upgrade`. This w
 For further information, please see the official documention for [managing dependencies](https://yarnpkg.com/en/docs/managing-dependencies) and [upgrading dependencies](https://yarnpkg.com/en/docs/cli/upgrade). This [Yarn vs NPM](https://www.sitepoint.com/yarn-vs-npm/) article by SitePoint also has some very useful information.
 
 The following was added to the default Hackathon Starter project:
-`yarn add assets-webpack-plugin babel-core babel-loader babel-plugin-transform-runtime babel-preset-es2015 babel-preset-stage-0 bootstrap-sass browser-syn browser-sync-webpack-plugin chunk-manifest-webpack-plugin express-rev jquery simple-pjax socket.io webpack webpack-dev-middleware webpack-dev-server webpack-manifest-plugin webpack-md5-hash`
+`yarn add assets-webpack-plugin babel-core babel-loader babel-plugin-transform-runtime babel-preset-es2015 babel-preset-stage-0 bootstrap-sass browser-sync browser-sync-webpack-plugin chunk-manifest-webpack-plugin express-rev jquery simple-pjax socket.io webpack webpack-dev-middleware webpack-dev-server webpack-manifest-plugin webpack-md5-hash`
 
 Obtaining API Keys
 -----------------
