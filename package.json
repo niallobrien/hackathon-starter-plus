@@ -11,22 +11,14 @@
   "scripts": {
     "start": "node app.js",
     "dev": "webpack --module-bind pug --progress --colors --watch -d",
-    "build": "rm -rf public/js/*.js && rm -rf public/js/*.map && webpack --config webpack.production.config.js --progress --colors -p",
+    "build": "rm -rf public/js/*.js && rm -rf public/js/*.map && rm -f public/js/manifest.json && webpack --config webpack.production.config.js --progress --colors",
     "test": "mocha --reporter spec"
   },
   "dependencies": {
-    "assets-webpack-plugin": "^3.5.0",
     "async": "^2.1.2",
-    "babel-core": "^6.17.0",
-    "babel-loader": "^6.2.5",
-    "babel-plugin-transform-runtime": "^6.15.0",
-    "babel-preset-es2015": "^6.16.0",
-    "babel-preset-stage-0": "^6.16.0",
     "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.15.2",
     "bootstrap-sass": "^3.3.7",
-    "browser-sync": "^2.17.5",
-    "browser-sync-webpack-plugin": "^1.1.3",
     "chalk": "^1.1.3",
     "chart.js": "^2.3.0",
     "cheerio": "^0.22.0",
@@ -34,7 +26,6 @@
     "clockwork": "^0.1.4",
     "compression": "^1.6.2",
     "connect-mongo": "^1.3.2",
-    "copy-webpack-plugin": "^3.0.1",
     "dotenv": "^2.0.0",
     "errorhandler": "^1.4.3",
     "express": "^4.14.0",
@@ -77,14 +68,12 @@
     "tumblr.js": "^1.1.1",
     "twilio": "^3.3.1-edge",
     "twit": "^2.2.5",
-    "validator": "^6.1.0",
-    "webpack": "^1.13.2",
-    "webpack-dev-middleware": "^1.8.4",
-    "webpack-dev-server": "^1.16.2",
-    "webpack-manifest-plugin": "^1.1.0",
-    "webpack-md5-hash": "^0.0.5"
+    "validator": "^6.1.0"
   },
   "devDependencies": {
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.18.0",
     "chai": "^3.5.0",
     "eslint": "^3.9.1",
     "eslint-config-airbnb-base": "^10.0.0",
@@ -92,7 +81,9 @@
     "mocha": "^3.1.2",
     "sinon": "^1.17.6",
     "sinon-mongoose": "^1.3.0",
-    "supertest": "^2.0.1"
+    "supertest": "^2.0.1",
+    "webpack": "beta",
+    "webpack-manifest-plugin": "^1.1.0"
   },
   "eslintConfig": {
     "extends": "airbnb-base",
