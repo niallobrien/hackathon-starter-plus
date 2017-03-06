@@ -17,7 +17,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const expressValidator = require('express-validator');
-// const expressStatusMonitor = require('express-status-monitor');
+const expressStatusMonitor = require('express-status-monitor');
 const sass = require('node-sass-middleware');
 const multer = require('multer');
 const upload = multer({ dest: path.join(__dirname, 'uploads') });
@@ -36,9 +36,10 @@ const passportConfig = require('./config/passport');
 /**
  * Create Express & Socket.io servers.
  */
+const socketIoPort = 3001;
 const app = express();
 const server = require('http').Server(app);
-const io = require('socket.io')(server);
+const io = require('socket.io')(socketIoPort);
 
 /**
  * Connect to MongoDB.
@@ -63,7 +64,7 @@ app.use(manifest({
   manifest: './public/js/manifest.json',
   prepend: '/js'
 }));
-// app.use(expressStatusMonitor({ websocket: io, port: app.get('port') }));
+app.use(expressStatusMonitor({ websocket: io, port: socketIoPort }));
 app.use(compression());
 app.use(sass({
   src: path.join(__dirname, 'public'),
@@ -127,12 +128,12 @@ app.use(errorHandler());
 /**
  * Socket.io.
  */
-io.on('connection', function(socket) {
+io.on('connection', (socket) => {
   socket.emit('greet', { hello: 'Hey there browser!' });
-  socket.on('respond', function(data) {
+  socket.on('respond', (data) => {
     console.log(data);
   });
-  socket.on('disconnect', function() {
+  socket.on('disconnect', () => {
     console.log('Socket disconnected');
   });
 });

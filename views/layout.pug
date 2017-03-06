@@ -21,10 +21,10 @@ html
 
     script(type='text/javascript', src=rev('commons.chunk.js'))
     script(type='text/javascript', src=rev('vendor.js'))
-    script(type='text/javascript', src='/socket.io/socket.io.js')
+    script(type='text/javascript', src='http://localhost:3001/socket.io/socket.io.js')
     script(type='text/javascript', src=rev('main.js'))
     script.
-      var socket = io.connect(window.location.href);
+      var socket = io.connect('http://localhost:3001')
       socket.on('greet', function (data) {
         console.log(data);
         socket.emit('respond', { message: 'Hey there, server!' });
