@@ -80,11 +80,13 @@ Features
 - **Local Authentication** using Email and Password
 - **OAuth 1.0a Authentication** via Twitter
 - **OAuth 2.0 Authentication** via Facebook, Google, GitHub, LinkedIn, Instagram
+- Webpack asset pipeline for client-side JS
 - Flash notifications
 - MVC Project Structure
 - Node.js clusters support
 - Sass stylesheets (auto-compiled via middleware)
 - Bootstrap 3 + Extra Themes
+- Socket.io
 - Contact Form (powered by Mailgun, Sendgrid or Mandrill)
 - **Account Management**
  - Gravatar
@@ -132,7 +134,10 @@ npm install
 # Or, if you prefer to use `yarn` instead of `npm`
 yarn install
 
-# Then simply start your app
+# To compile the client-side JS and watch for changes
+npm run dev
+
+# Then simply start your app (in another terminal)
 node app.js
 ```
 
@@ -153,8 +158,11 @@ Hackathon Starter includes a `yarn.lock` file by default and as project dependen
 To upgrade your local dependencies using Yarn, simply run `yarn upgrade`. This will update all dependencies to their latest version based on the [version range](https://docs.npmjs.com/getting-started/semantic-versioning#semver-for-consumers) specified in the `package.json` file. The yarn.lock file will be recreated as well.
 For further information, please see the official documention for [managing dependencies](https://yarnpkg.com/en/docs/managing-dependencies) and [upgrading dependencies](https://yarnpkg.com/en/docs/cli/upgrade). This [Yarn vs NPM](https://www.sitepoint.com/yarn-vs-npm/) article by SitePoint also has some very useful information.
 
+The following was added to the default Hackathon Starter project:
+`yarn add assets-webpack-plugin babel-core babel-loader babel-plugin-transform-runtime babel-preset-es2015 babel-preset-stage-0 bootstrap-sass browser-sync browser-sync-webpack-plugin chunk-manifest-webpack-plugin express-rev jquery simple-pjax socket.io webpack webpack-dev-middleware webpack-dev-server webpack-manifest-plugin webpack-md5-hash`
+
 Obtaining API Keys
-------------------
+-----------------
 
 To use any of the included APIs or OAuth authentication methods, you will need
 to obtain appropriate credentials: Client ID, Client Secret, API Key, or
@@ -520,19 +528,13 @@ and a new database step-by-step with mLab.
 ### Why Pug (Jade) instead of Handlebars?
 When I first started this project I didn't have any experience with Handlebars. Since then I have worked on Ember.js apps and got myself familiar with the Handlebars syntax. While it is true Handlebars is easier, because it looks like good old HTML, I have no regrets picking Jade over Handlebars. First off, it's the default template engine in Express, so someone who has built Express apps in the past already knows it. Secondly, I find `extends` and `block` to be indispensable, which as far as I know, Handlebars does not have out of the box. And lastly, subjectively speaking, Jade looks much cleaner and shorter than Handlebars, or any non-HAML style for that matter.
 
-### Why do you have all routes defined in app.js?
-For the sake of simplicity. While there might be a better approach,
-such as passing `app` context to each controller as outlined in this
-[blog](http://timstermatic.github.io/blog/2013/08/17/a-simple-mvc-framework-with-node-and-express/),
-I find such style to be confusing for beginners.
-It took me a long time to grasp the concept of `exports` and `module.exports`,
-let alone having a global `app` reference in other files.
-That to me is a backward thinking.
-The `app.js` is the "heart of the app", it should be the one referencing
-models, routes, controllers, etc.
-When working solo on small projects I actually prefer to have everything inside `app.js` as is the case with [this]((https://github.com/sahat/ember-sass-express-starter/blob/master/app.js))
-REST API server.
-
+### I don't need a sticky footer, can I delete it?
+Absolutely. But unlike a regular footer there is a bit more work involved.
+First, delete `#wrap` and `#footer` ID selectors and `html, body { height: 100%; }`
+from **main.less**. Next, delete `#wrap` and `#footer` lines from **layout.pug**
+(By the way, if no element is specified before class or id, Pug assumes it is
+a `div` element). Don't forget to indent everything under `#wrap` to the left
+once, since this project uses two spaces per block indentation.
 
 ### Why is there no Mozilla Persona as a sign-in option?
 If you would like to use **Persona** authentication strategy, use the
@@ -572,7 +574,7 @@ Move all JavaScript files from `html5up-escape-velocity/js` to `public/js`. Then
 **Note:** Do not forget to update all the CSS and JS paths accordingly.
 
 Create a new file `escape-velocity.pug` and paste the Pug markup in `views` folder.
-Whenever you see the code `res.render('account/login')` - that means it will search for `views/account/login.pug` file.
+Whenever you see the code `res.render('account/login')` - that means it will search for `views/account/login.jade` file.
 
 Let's see how it looks. Create a new controller **escapeVelocity** inside `controllers/home.js`:
 
@@ -591,7 +593,7 @@ app.get('/escape-velocity', homeController.escapeVelocity);
 
 Restart the server (if you are not using **nodemon**), then you should see the new template at [http://localhost:3000/escape-velocity](http://localhost:3000/escape-velocity).
 
-I will stop right here, but if you would like to use this template as more than just a single page, take a look at how these Jade templates work: `layout.pug` - base template, `index.pug` - home page, `partials/header.pug` - Bootstrap navbar, `partials/footer.pug` - sticky footer. You will have to manually break it apart into smaller pieces. Figure out which part of the template you want to keep the same on all pages - that's your new `layout.pug`.
+I will stop right here, but if you would like to use this template as more than just a single page, take a look at how these Jade templates work: `layout.jade` - base template, `index.jade` - home page, `partials/header.jade` - Bootstrap navbar, `partials/footer.jade` - sticky footer. You will have to manually break it apart into smaller pieces. Figure out which part of the template you want to keep the same on all pages - that's your new `layout.jade`.
 Then, each page that changes, be it `index.pug`, `about.pug`, `contact.pug`
 will be embedded in your new `layout.pug` via `block content`. Use existing templates as a reference.
 
@@ -640,7 +642,7 @@ why an error has occurred. Here is a more general example of what express-valida
 
 To keep consistent with that style, you should pass all flash messages
 as `{ msg: 'My flash message' }` instead of a string. Otherwise you will just see an alert box
-without an error message. That is because, in **partials/flash.pug** template it will try to output
+without an error message. That is because, in **partials/flash.jade** template it will try to output
 `error.msg` (i.e. `"My flash message".msg`), in other words it will try to call a `msg` method on a *String* object,
 which will return *undefined*. Everything I just mentioned about errors, also applies
 to "info" and "success" flash messages, and you could even create a new one yourself, such as:
@@ -658,7 +660,7 @@ if messages.warning
       div= warning.msg
 ```
 
-`partials/flash.pug` is a partial template that contains how flash messages
+`partials/flash.jade` is a partial template that contains how flash messages
 are formatted. Previously, flash
 messages were scattered throughout each view that used flash messages
 (contact, login, signup, profile), but now, thankfully it is uses a *DRY* approach.
@@ -666,13 +668,12 @@ messages were scattered throughout each view that used flash messages
 The flash messages partial template is *included* in the `layout.pug`, along with footer and navigation.
 ```jade
 body
-    include partials/header
-
+  #wrap
+    include partials/navigation
     .container
       include partials/flash
       block content
-
-    include partials/footer
+  include partials/footer
 ```
 
 If you have any further questions about flash messages,
@@ -682,14 +683,14 @@ or send a pull request if you  would like to include something that I missed.
 <hr>
 
 ### How do I create a new page?
-A more correct way to be to say "How do I create a new route". The main file `app.js` contains all the routes.
+A more correct way to be to say "How do I create a new route". The routes file `config/routes.js` contains all the routes.
 Each route has a callback function associated with it. Sometimes you will see 3 or more arguments
 to routes. In cases like that, the first argument is still a URL string, while middle arguments
 are what's called middleware. Think of middleware as a door. If this door prevents you from
 continuing forward, you won't get to your callback function. One such example is a route that requires authentication.
 
 ```js
-app.get('/account', passportConfig.isAuthenticated, userController.getAccount);
+app.get('/account', passportConf.isAuthenticated, userController.getAccount);
 ```
 
 It always goes from left to right. A user visits `/account` page. Then `isAuthenticated` middleware
@@ -742,8 +743,8 @@ And here is how a route would look if it required an *authentication* and an *au
 
 ```js
 app.route('/api/twitter')
-  .all(passportConfig.isAuthenticated)
-  .all(passportConfig.isAuthorized)
+  .all(passportConf.isAuthenticated)
+  .all(passportConf.isAuthorized)
   .get(apiController.getTwitter)
   .post(apiController.postTwitter)
 ```
@@ -858,11 +859,6 @@ First you need to install socket.io:
 npm install socket.io --save
 ```
 
-Or, again, if you use Yarn:
-```js
-yarn add socket.io
-```
-
 Replace `const app = express();` with the following code:
 
 ```js
@@ -872,7 +868,7 @@ const io = require('socket.io')(server);
 ```
 
 I like to have the following code organization in `app.js` (from top to bottom): module dependencies,
-import controllers, import configs, connect to database, express configuration, routes,
+import controllers, import configs, connect to database, express configuration, routes (defined in `config/routes.js`),
 start the server, socket.io stuff. That way I always know where to look for things.
 
 Add the following code at the end of `app.js`:
@@ -1234,7 +1230,7 @@ listed below.
 - First, install this Ruby gem: `sudo gem install rhc` :gem:
 - Run `rhc login` and enter your OpenShift credentials
 - From your app directory run `rhc app create MyApp nodejs-0.10`
- - **Note:** *MyApp* is the name of your app (no spaces)
+ - **Note:** *MyApp* is the name your app (no spaces)
 - Once that is done, you will be provided with **URL**, **SSH** and **Git Remote** links
 - Visit provided **URL** and you should see the *Welcome to your Node.js application on OpenShift* page
 - Copy and and paste **Git Remote** into `git remote add openshift YOUR_GIT_REMOTE`
@@ -1292,7 +1288,7 @@ Add this to `package.json`, after *name* and *version*. This is necessary becaus
 - Run `cf bind-service [your-app-name] [your-service-name]` to associate your application with a service created above
 - Run `cf files [your-app-name] logs/env.log` to see the *environment variables created for MongoDB.
 - Copy the **MongoDB URI** that should look something like the following: `mongodb://68638358-a3c6-42a1-bae9-645b607d55e8:46fb97e6-5ce7-4146-9a5d-d623c64ff1fe@192.155.243.23:10123/db`
-- Then set it as an environment variable for your application by running `cf set-env [your-app-name] MONGODB_URI [your-mongodb-uri]`
+- Then set it as an environment variable for your application by running `cf set-env [your-app-name] MONGODB [your-mongodb-uri]`
 - Run `cf restart [your-app-name]` for the changes to take effect.
 - Visit your starter app at **http://[your-app-name].ng.bluemix.net**
 - Done!
@@ -1623,7 +1619,7 @@ project, I cannot accept every pull request. Please open an issue before
 submitting a pull request. This project uses
 [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) with a
 few minor exceptions. If you are submitting a pull request that involves
-Pug templates, please make sure you are using *spaces*, not tabs.
+Jade templates, please make sure you are using *spaces*, not tabs.
 
 License
 -------
