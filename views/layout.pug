@@ -21,8 +21,19 @@ html
 
     script(type='text/javascript', src=rev('commons.chunk.js'))
     script(type='text/javascript', src=rev('vendor.js'))
+<<<<<<< HEAD
     script(type='text/javascript', src=url + ':3001/socket.io/socket.io.js')
     script(type='text/javascript', src=rev('main.js'))
+=======
+    script(type='text/javascript', src='http://localhost:3001/socket.io/socket.io.js')
+    script(type='text/javascript', src=rev('main.js'))
+    script.
+      var socket = io.connect('http://localhost:3001')
+      socket.on('greet', function (data) {
+        console.log(data);
+        socket.emit('respond', { message: 'Hey there, server!' });
+      });
+>>>>>>> 664db7711412f3195cd7e0274c252f0ac02ffd25
 
     // Google Analytics: change UA-XXXXX-X to be your site's ID
     script.

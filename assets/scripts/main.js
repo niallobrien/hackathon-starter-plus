@@ -28,6 +28,7 @@ $(document).ready(function () {
   // Initialise modules here...
   console.log('jQuery version: ' + jQuery.fn.jquery)
   Greetings.to('awesome developer')
+<<<<<<< HEAD
 
   var socket = io.connect(window.location.hostname + ':3001')
   socket.on('greet', (data) => {
@@ -35,4 +36,6 @@ $(document).ready(function () {
     socket.emit('respond', { message: 'Hey there, server!' })
   })
 
+=======
+>>>>>>> 664db7711412f3195cd7e0274c252f0ac02ffd25
 })
