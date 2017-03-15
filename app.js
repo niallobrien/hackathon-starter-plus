@@ -97,7 +97,7 @@ app.use(lusca.xframe('SAMEORIGIN'));
 app.use(lusca.xssProtection(true));
 app.use((req, res, next) => {
   // provide host to construct url to socketio (port 3001)
-  res.locals.url = req.protocol + '://' + req.host
+  res.locals.url = req.protocol + '://' + req.hostname
   res.locals.user = req.user;
   next();
 });
