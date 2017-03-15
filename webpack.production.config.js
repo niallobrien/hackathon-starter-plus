@@ -8,7 +8,7 @@ const nodeModulesPath = path.resolve(__dirname, 'node_modules')
 const config = {
   devtool: 'source-map',
   entry: {
-    vendor: ['jquery', 'bootstrap-sass', 'simple-pjax', 'chart.js'],
+    vendor: ['jquery', 'bootstrap-sass', 'simple-pjax'],
     main: srcPath
   },
   output: {
