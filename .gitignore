@@ -13,9 +13,9 @@ logs
 results
 tmp
 
-#Build
-public/js/*.*
-public/css/main.css
+# Compiled Assets
+public/assets
+public/*.json
 
 # API keys and secrets
 .env

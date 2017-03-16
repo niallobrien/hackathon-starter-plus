@@ -134,11 +134,17 @@ npm install
 # Or, if you prefer to use `yarn` instead of `npm`
 yarn install
 
-# To compile the client-side JS and watch for changes
+# To compile the client-side JS
 npm run dev
+
+# Or compile the client-side JS and watch for changes
+npm run watch
 
 # Then simply start your app (in another terminal)
 node app.js
+
+# Optionalliy, to build your assets for production (styles and scripts)
+npm run production
 ```
 
 **Note:** I highly recommend installing [Nodemon](https://github.com/remy/nodemon).
