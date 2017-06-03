@@ -1,0 +1,642 @@
+// Atomic Variables
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// Common Project Colours
+$color--aqua ?= #7FDBFF
+$color--blue ?= #0074D9
+$color--navy ?= #001F3F
+$color--teal ?= #39CCCC
+$color--green ?= #2ECC40
+$color--olive ?= #3D9970
+$color--lime ?= #01FF70
+
+$color--yellow ?= #FFDC00
+$color--orange ?= #FF851B
+$color--red ?= #FF4136
+$color--fuchsia ?= #F012BE
+$color--purple ?= #B10DC9
+$color--maroon ?= #85144B
+
+$color--white ?= #FFFFFF
+$color--silver ?= #DDDDDD
+$color--gray ?= #AAAAAA
+$color--black ?= #111111
+
+// Default Notification Colours
+$color--success ?= #47a967
+$color--notice ?= #4791a9
+$color--warning ?= #dc7f2a
+$color--error ?= #ca4427
+
+// Brand Colours
+$color--initial ?= $color--white
+$color--primary ?= $color--blue
+$color--secondary ?= tint($color--blue, 10%)
+$color--tertiary ?= $color--silver
+$color--quaternary ?= whitesmoke
+$base--spacing ?= rem(20)
+
+$base--bold-font-weight ?= 700
+$base--caps-letter-spacing ?= .2em
+
+$base--line-height ?= 1.6
+$base--line-height-1 ?= 1
+$base--line-height-2 ?= 1.125
+$base--line-height-3 ?= 1.25
+$base--line-height-4 ?= 1.5
+
+$base--width-1 ?= $base--spacing * 15
+$base--width-2 ?= $base--spacing * 20
+$base--width-3 ?= $base--spacing * 30
+$base--width-4 ?= $base--spacing * 40
+
+$base--z1 ?= 1
+$base--z2 ?= 2
+$base--z3 ?= 3
+$base--z4 ?= 4
+
+$base--border-width ?= 1px
+$base--border-radius ?= 3px
+
+$base--darken-1 ?= rgba(0, 0, 0, .0625)
+$base--darken-2 ?= rgba(0, 0, 0, .125)
+$base--darken-3 ?= rgba(0, 0, 0, .25)
+$base--darken-4 ?= rgba(0, 0, 0, .5)
+
+$base--lighten-1 ?= rgba(255, 255, 255, .0625)
+$base--lighten-2 ?= rgba(255, 255, 255, .125)
+$base--lighten-3 ?= rgba(255, 255, 255, .25)
+$base--lighten-4 ?= rgba(255, 255, 255, .5)
+
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+// Utility
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// Typography
+.font-family-inherit
+  font-family inherit
+.font-size-inherit
+  font-size inherit
+.text-decoration-none
+  text-decoration none
+
+.bold
+  font-weight $base--bold-font-weight
+.regular
+  font-weight normal
+.italic
+  font-style italic
+.caps
+  text-transform uppercase
+  letter-spacing $base--caps-letter-spacing
+
+.left-align
+  text-align left
+.center
+  text-align center
+.right-align
+  text-align right
+.justify
+  text-align justify
+
+.nowrap
+  white-space nowrap
+.break-word
+  word-wrap break-word
+
+.line-height-default
+  line-height $base--line-height
+.line-height-1
+  line-height $base--line-height-1
+.line-height-2
+  line-height $base--line-height-2
+.line-height-3
+  line-height $base--line-height-3
+.line-height-4
+  line-height $base--line-height-4
+
+.list-style-none
+  list-style none !important
+.underline
+  text-decoration underline
+
+.truncate
+  max-width 100%
+  overflow hidden
+  text-overflow ellipsis
+  white-space nowrap
+
+.list-reset
+  list-style none
+  padding-left 0
+
+
+// Layout
+.inline
+  display inline
+.block
+  display block
+.inline-block
+  display inline-block
+.table
+  display table
+.table-cell
+  display table-cell
+
+.overflow-hidden
+  overflow hidden
+.overflow-scroll
+  overflow scroll
+.overflow-auto
+  overflow auto
+
+.clearfix-before,
+.clearfix-after
+  &:before,
+  &:after
+    content " "
+    display table
+
+.clearfix
+  clear both
+
+.left
+  float left
+.right
+  float right
+
+.fit
+  max-width 100%
+
+.fill
+  width 100%
+
+.max-width-1
+  max-width $base--width-1
+.max-width-2
+  max-width $base--width-2
+.max-width-3
+  max-width $base--width-3
+.max-width-4
+  max-width $base--width-4
+
+.border-box
+  box-sizing border-box
+
+
+// Align
+.align-baseline
+  vertical-align baseline
+.align-top
+  vertical-align top
+.align-middle
+  vertical-align middle
+.align-bottom
+  vertical-align bottom
+
+
+// Margin
+.m0
+  margin 0  !important
+.mt0
+  margin-top 0  !important
+.mr0
+  margin-right 0  !important
+.mb0
+  margin-bottom 0  !important
+.ml0
+  margin-left 0  !important
+.mx0
+  margin-left 0  !important
+  margin-right 0  !important
+.my0
+  margin-top 0  !important
+  margin-bottom 0  !important
+
+.m1
+  margin $base--spacing * .8  !important
+.mt1
+  margin-top $base--spacing * .8  !important
+.mr1
+  margin-right $base--spacing * .8  !important
+.mb1
+  margin-bottom $base--spacing * .8  !important
+.ml1
+  margin-left $base--spacing * .8  !important
+.my1
+  margin-top $base--spacing * .8  !important
+  margin-bottom $base--spacing * .8  !important
+.mx1
+  margin-left $base--spacing * .8  !important
+  margin-right $base--spacing * .8  !important
+
+.m2
+  margin $base--spacing  !important
+.mt2
+  margin-top $base--spacing  !important
+.mr2
+  margin-right $base--spacing  !important
+.mb2
+  margin-bottom $base--spacing  !important
+.ml2
+  margin-left $base--spacing  !important
+.my2
+  margin-top $base--spacing  !important
+  margin-bottom $base--spacing  !important
+.mx2
+  margin-left $base--spacing  !important
+  margin-right $base--spacing  !important
+
+.m3
+  margin $base--spacing * 1.5  !important
+.mt3
+  margin-top $base--spacing * 1.5  !important
+.mr3
+  margin-right $base--spacing * 1.5  !important
+.mb3
+  margin-bottom $base--spacing * 1.5  !important
+.ml3
+  margin-left $base--spacing * 1.5  !important
+.my3
+  margin-top $base--spacing * 1.5  !important
+  margin-bottom: $base--spacing * 1.5  !important
+.mx3
+  margin-left $base--spacing * 1.5  !important
+  margin-right $base--spacing * 1.5  !important
+
+.m4
+  margin $base--spacing * 2  !important
+.mt4
+  margin-top $base--spacing * 2  !important
+.mr4
+  margin-right $base--spacing * 2  !important
+.mb4
+  margin-bottom $base--spacing * 2  !important
+.ml4
+  margin-left $base--spacing * 2  !important
+.my4
+  margin-top $base--spacing * 2  !important
+  margin-bottom $base--spacing * 2  !important
+.mx4
+  margin-left $base--spacing * 2  !important
+  margin-right $base--spacing * 2  !important
+
+
+// Padding
+.p0
+  padding 0  !important
+.pt0
+  padding-top 0  !important
+.pr0
+  padding-right 0  !important
+.pb0
+  padding-bottom 0  !important
+.pl0
+  padding-left: 0  !important
+.px0
+  padding-left 0  !important
+  padding-right 0  !important
+.py0
+  padding-top 0  !important
+  padding-bottom 0  !important
+
+.p1 
+  padding $base--spacing * .8  !important
+.pt1
+  padding-top $base--spacing * .8  !important
+.pr1
+  padding-right $base--spacing * .8  !important
+.pb1
+  padding-bottom $base--spacing * .8  !important
+.pl1
+  padding-left $base--spacing * .8  !important
+.py1
+  padding-top $base--spacing * .8  !important
+  padding-bottom $base--spacing * .8  !important
+.px1
+  padding-left $base--spacing * .8  !important
+  padding-right $base--spacing * .8  !important
+
+.p2
+  padding $base--spacing  !important
+.pt2
+  padding-top $base--spacing  !important
+.pr2
+  padding-right $base--spacing  !important
+.pb2
+  padding-bottom $base--spacing  !important
+.pl2
+  padding-left $base--spacing  !important
+.py2
+  padding-top $base--spacing  !important
+  padding-bottom $base--spacing  !important
+.px2
+  padding-left $base--spacing  !important
+  padding-right $base--spacing  !important
+
+.p3 
+  padding $base--spacing * 1.5 !important
+.pt3
+  padding-top $base--spacing * 1.5  !important
+.pr3
+  padding-right $base--spacing * 1.5  !important
+.pb3
+  padding-bottom $base--spacing * 1.5  !important
+.pl3
+  padding-left $base--spacing * 1.5  !important
+.py3
+  padding-top $base--spacing * 1.5  !important
+  padding-bottom $base--spacing * 1.5  !important
+.px3
+  padding-left   $base--spacing * 1.5  !important
+  padding-right  $base--spacing * 1.5  !important
+
+.p4 
+  padding $base--spacing * 2  !important
+.pt4
+  padding-top $base--spacing * 2  !important
+.pr4
+  padding-right $base--spacing * 2  !important
+.pb4
+  padding-bottom $base--spacing * 2  !important
+.pl4
+  padding-left $base--spacing * 2  !important
+.py4
+  padding-top $base--spacing * 2  !important
+  padding-bottom $base--spacing * 2  !important
+.px4
+  padding-left $base--spacing * 2  !important
+  padding-right $base--spacing * 2  !important
+
+
+// Borders
+.border
+  border-style solid
+  border-width $base--border-width
+
+
+.border-top
+  border-top-style solid
+  border-top-width $base--border-width
+
+
+.border-right
+  border-right-style solid
+  border-right-width $base--border-width
+
+
+.border-bottom
+  border-bottom-style solid
+  border-bottom-width $base--border-width
+
+
+.border-left
+  border-left-style solid
+  border-left-width $base--border-width
+
+
+.border-none border 0
+
+.rounded
+  border-radius $base--border-radius
+.circle
+  border-radius 50%
+
+.rounded-top
+  border-radius $base--border-radius $base--border-radius 0 0
+.rounded-right
+  border-radius 0 $base--border-radius $base--border-radius 0
+.rounded-bottom
+  border-radius 0 0 $base--border-radius $base--border-radius
+.rounded-left
+    border-radius $base--border-radius 0 0 $base--border-radius
+
+.not-rounded
+  border-radius 0
+
+
+// Position
+.relative
+  position relative
+.absolute
+  position absolute
+.fixed
+  position fixed
+
+.top-0
+  top 0
+.right-0
+  right 0
+.bottom-0
+  bottom 0
+.left-0
+  left 0
+
+.z1
+  z-index $base--z1
+.z2
+  z-index $base--z2
+.z3
+  z-index $base--z3
+.z4
+  z-index $base--z4
+
+
+// Hide
+.hide
+  position absolute !important
+  height 1px
+  width 1px
+  overflow hidden
+  clip rect(1px, 1px, 1px, 1px)
+
+
++mobile()
+  .hide-mobile-only
+    display none !important
+
++tablet()
+  .hide-tablet
+    display none !important
+
++tablet-only()
+  .hide-tablet-only
+    display none !important
+
++desktop()
+  .hide-desktop
+    display none !important
+
+.display-none
+  display none !important
+
+
+//Colors
+.black
+  color $color--black
+.gray
+  color $color--gray
+.silver
+  color $color--silver
+.white
+  color $color--white
+
+.aqua
+  color $color--aqua
+.blue
+  color $color--blue
+.navy
+  color $color--navy
+.teal
+  color $color--teal
+.green
+  color $color--green
+.olive
+  color $color--olive
+.lime
+  color $color--lime
+
+.yellow
+  color $color--yellow
+.orange
+  color $color--orange
+.red
+  color $color--red
+.fuchsia
+  color $color--fuchsia
+.purple
+  color $color--purple
+.maroon
+  color $color--maroon
+
+.color-inherit
+  color inherit
+.muted
+  opacity .5
+
+
+// Background Colors
+.bg-black
+  background-color $color--black
+.bg-gray
+  background-color $color--gray
+.bg-silver
+  background-color $color--silver
+.bg-white
+  background-color $color--white
+
+.bg-aqua
+  background-color $color--aqua
+.bg-blue
+  background-color $color--blue
+.bg-navy
+  background-color $color--navy
+.bg-teal
+  background-color $color--teal
+.bg-green
+  background-color $color--green
+.bg-olive
+  background-color $color--olive
+.bg-lime
+  background-color $color--lime
+
+.bg-yellow
+  background-color $color--yellow
+.bg-orange
+  background-color $color--orange
+.bg-red
+  background-color $color--red
+.bg-fuchsia
+  background-color $color--fuchsia
+.bg-purple
+  background-color $color--purple
+.bg-maroon
+  background-color $color--maroon
+
+
+// Border Colors
+.border-black
+  border-color $color--black
+.border-gray
+  border-color $color--gray
+.border-silver
+  border-color $color--silver
+.border-white
+  border-color $color--white
+
+.border-aqua
+  border-color $color--aqua
+.border-blue
+  border-color $color--blue
+.border-navy
+  border-color $color--navy
+.border-teal
+  border-color $color--teal
+.border-green
+  border-color $color--green
+.border-olive
+  border-color $color--olive
+.border-lime
+  border-color $color--lime
+
+.border-yellow
+  border-color $color--yellow
+.border-orange
+  border-color $color--orange
+.border-red
+  border-color $color--red
+.border-fuchsia
+  border-color $color--fuchsia
+.border-purple
+  border-color $color--purple
+.border-maroon
+  border-color $color--maroon
+
+
+// Background Images
+// bg size
+.bg-cover
+  background-size cover
+.bg-contain
+  background-size contain
+
+// bg position
+.bg-center
+  background-position center
+.bg-top
+  background-position top
+.bg-right
+  background-position right
+.bg-bottom
+  background-position bottom
+.bg-left
+  background-position left
+
+.bg-no-repeat
+  background-repeat no-repeat
+.bg-repeat-x
+  background-repeat repeat-x
+.bg-repeat-y
+  background-repeat repeat-y
+
+
+// Darken
+.bg-darken-1
+  background-color $base--darken-1
+.bg-darken-2
+  background-color $base--darken-2
+.bg-darken-3
+  background-color $base--darken-3
+.bg-darken-4
+  background-color $base--darken-4
+
+
+// Lighten
+.bg-lighten-1
+  background-color $base--lighten-1
+.bg-lighten-2
+  background-color $base--lighten-2
+.bg-lighten-3
+  background-color $base--lighten-3
+.bg-lighten-4
+  background-color $base--lighten-4

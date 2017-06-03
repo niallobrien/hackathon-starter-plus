@@ -1,4 +1,4 @@
-let mix = require('laravel-mix');
+const { mix } = require('laravel-mix');
 isProduction = (process.env.NODE_ENV === 'production' || process.argv.includes('-p'))
 
 /*
@@ -13,19 +13,15 @@ isProduction = (process.env.NODE_ENV === 'production' || process.argv.includes('
  */
 
 mix
+  .webpackConfig({devtool: 'source-map'})
+  .autoload({
+    jquery: ['$', 'window.jQuery', 'jQuery', 'jquery'],
+    tether: ['window.Tether', 'Tether']
+  })
   .setPublicPath('public')
   .js('assets/scripts/main.js', '/scripts')
-  .stylus('assets/styles/main.styl', 'styles', {
-    use: [
-	  // require('rupture')(),
-      // require('nib')(),
-      // require('jeet')()
-    ],
-    import: [
-      '~bulma-stylus/bulma.styl'
-    ]
-  })
-  .extract(['jquery', 'lodash'])
+  .sass('assets/styles/main.scss', '/styles')
+  .extract(['jquery', 'lodash', 'simple-pjax', 'tether', 'bootstrap'])
 
 if (isProduction) mix.version()
 

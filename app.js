@@ -56,7 +56,7 @@ process.exit();
 /**
  * Express configuration.
  */
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 1337);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
@@ -64,7 +64,8 @@ app.set('view engine', 'pug');
 app.use((req, res, next) => {
   app.locals.filters = {
     'mix': (text, options) => {
-      if (!text) return;
+      if (!text) return
+      text = text.replace(/["']/g, '')
 
       const manifest = require(__dirname + '/public/mix-manifest.json')
       if (options.css) return `<link rel="stylesheet" href="${manifest[text]}">`

@@ -1,0 +1,12 @@
+/*
+ * Component example
+*/
+.component-example
+  a {
+    color: red;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+  }
