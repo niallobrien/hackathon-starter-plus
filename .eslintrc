@@ -1,8 +1,0 @@
-// Enforce Standard JS style guide
-{
-  "extends": "standard",
-  "globals": {
-    "jQuery": true,
-    "$": true
-  }
-}
