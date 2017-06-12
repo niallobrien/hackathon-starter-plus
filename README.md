@@ -743,7 +743,7 @@ If you just want to display a page, then use `GET`, if you are submitting a form
 Here is a typical workflow for adding new routes to your application. Let's say we are building
 a page that lists all books from database.
 
-**Step 1.** Start by defining a route.
+**Step 1.** Start by defining a route in `config/routes.js`.
 ```js
 app.get('/books', bookController.getBooks);
 ```
