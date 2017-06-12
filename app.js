@@ -2,7 +2,6 @@
  * Module dependencies.
  */
 const express = require('express');
-const manifest = require('express-rev');
 const compression = require('compression');
 const session = require('express-session');
 const bodyParser = require('body-parser');
@@ -57,19 +56,27 @@ process.exit();
 /**
  * Express configuration.
  */
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 1337);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-app.use(manifest({
-  manifest: './public/js/manifest.json',
-  prepend: '/js'
-}));
+
+// Middleware for Jade/Pug custom filter for use with Laravel Mix
+app.use((req, res, next) => {
+  app.locals.filters = {
+    'mix': (text, options) => {
+      if (!text) return
+      text = text.replace(/["']/g, '')
+
+      const manifest = require(__dirname + '/public/mix-manifest.json')
+      if (options.css) return `<link rel="stylesheet" href="${manifest[text]}">`
+      if (options.js) return `<script type="text/javascript" src="${manifest[text]}"></script>`
+    }
+  }
+  next();
+});
+
 app.use(expressStatusMonitor({ websocket: io, port: socketIoPort }));
 app.use(compression());
-app.use(sass({
-  src: path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public')
-}));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -97,7 +104,8 @@ app.use(lusca.xframe('SAMEORIGIN'));
 app.use(lusca.xssProtection(true));
 app.use((req, res, next) => {
   // provide host to construct url to socketio (port 3001)
-  res.locals.url = req.protocol + '://' + req.hostname
+  res.locals.hostname = req.protocol + '://' + req.hostname
+  res.locals.fullHostname = req.protocol + '://' + req.hostname + ':' + req.app.settings.port
   res.locals.user = req.user;
   next();
 });

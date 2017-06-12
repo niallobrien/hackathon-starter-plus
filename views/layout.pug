@@ -6,9 +6,9 @@ html
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(name='theme-color' content='#4DA5F4')
     meta(name='csrf-token', content=_csrf)
-    title #{title} - Hackathon Starter
-    link(rel='shortcut icon', href='/favicon.png')
-    link(rel='stylesheet', href='/css/main.css')
+    title #{title} - Hackathon Starter Plus
+    link(rel='shortcut icon', href=fullHostname + '/favicon.png')
+    :mix(css) '/styles/main.css'
 
   body
     include partials/header
@@ -19,10 +19,10 @@ html
 
     include partials/footer
 
-    script(type='text/javascript', src=rev('commons.chunk.js'))
-    script(type='text/javascript', src=rev('vendor.js'))
-    script(type='text/javascript', src=url + ':3001/socket.io/socket.io.js')
-    script(type='text/javascript', src=rev('main.js'))
+    :mix(js) '/scripts/manifest.js'
+    :mix(js) '/scripts/vendor.js'
+    script(type='text/javascript', src=hostname + ':3001/socket.io/socket.io.js')
+    :mix(js) '/scripts/main.js'
 
     // Google Analytics: change UA-XXXXX-X to be your site's ID
     script.
