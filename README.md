@@ -1,4 +1,4 @@
-![](https://lh4.googleusercontent.com/-PVw-ZUM9vV8/UuWeH51os0I/AAAAAAAAD6M/0Ikg7viJftQ/w1286-h566-no/hackathon-starter-logo.jpg)
+![](![Hackathon Starter+](/../screenshots/hackathon-starter-plus.png?raw=true "Hackathon Starter+").png)
 Hackathon Starter Plus
 =======================
 
