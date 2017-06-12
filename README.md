@@ -1,5 +1,5 @@
 ![Hackathon Starter+](/../screenshots/hackathon-starter-plus.png?raw=true "Hackathon Starter+")
-Hackathon Starter Plus
+Hackathon Starter+
 =======================
 
 [![Dependency Status](https://david-dm.org/sahat/hackathon-starter/status.svg?style=flat)](https://david-dm.org/sahat/hackathon-starter) [![Build Status](https://travis-ci.org/sahat/hackathon-starter.svg?branch=master)](https://travis-ci.org/sahat/hackathon-starter) [![Join the chat at https://gitter.im/sahat/hackathon-starter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/sahat/hackathon-starter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Thinkful Pair on Node](https://tf-assets-staging.s3.amazonaws.com/badges/thinkful_repo_badge.svg)](http://start.thinkful.com/node/)
@@ -169,7 +169,7 @@ The following was added to the default Hackathon Starter project:
 
 Client-side CSS and JS
 ----------------------
-This fork of Hackathon Starter handles client-side asset compilation in a very different manner. In Hackathon Starter, all assets were placed under the `public` directory. In Hackathon Starter Plus, you'll find all of the assets
+This fork of Hackathon Starter handles client-side asset compilation in a very different manner. In Hackathon Starter, all assets were placed under the `public` directory. In Hackathon Starter+, you'll find all of the assets
 under `assets`, eg. `assets/styles` and `assets/scripts`. You will need to keep two terminal sessions open, one to handle the asset compilation courtest of Webpack, and one complete, start your server in another terminal `npm start`.
 Use Nodemon to automatically restart your Express server if you wish.
 
@@ -845,15 +845,12 @@ parsing websites using [Cheerio](https://github.com/cheeriojs/cheerio), and etc.
 <hr>
 
 ### How do I use Socket.io with Hackathon Starter?
-[Dan Stroot](https://github.com/dstroot) submitted an excellent [pull request](https://github.com/dstroot/hackathon-starter/commit/0a632def1ce8da446709d92812423d337c977d75) that adds a real-time dashboard with socket.io.
-And as  much as I'd like to add it to the project, I think it violates one of the main
-principles of the Hackathon Starter:
-> When I started this project, my primary focus was on simplicity and ease of use.
-> I also tried to make it as generic and reusable as possible to cover most use cases of
-> hackathon web apps, **without being too specific**.
+Hackathon Starter+ includes Socket.io support out-of-the-box.
+Towards the bottom of `app.js` you will find an example of the server sending a message to connected clients via Websockets.
+In `assets/scripts/main.js` you will see an example of a client (browser) sending a message to the server.
 
-When I need to use socket.io, I **really** need it, but most of the time - I don't. But more
-importantly, websockets support is still experimental on most hosting providers. As of October 2013,
+Check the console in both your browser & server to verify that they have sent & received the test messages.
+
 Heroku supports websockets, but not until you opt-in by running this command:
 
 ```js
