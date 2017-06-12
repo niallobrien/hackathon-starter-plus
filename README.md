@@ -1,4 +1,4 @@
-![Hackathon Starter+](/../screenshots/hackathon-starter-plus.png?raw=true "Hackathon Starter+").png)
+![Hackathon Starter+](/../screenshots/hackathon-starter-plus.png?raw=true "Hackathon Starter+")
 Hackathon Starter Plus
 =======================
 
