@@ -8,7 +8,10 @@
 $fa-font-path: '~font-awesome/fonts';
 @import "~font-awesome/scss/font-awesome";
 
-@import "themes/default/default";
+@import "themes/default/default.scss";
+@import "lib/bootstrap-social.scss";
+
+@import "node_modules/basscss-sass/scss/basscss.scss";
 
 
 /* Components

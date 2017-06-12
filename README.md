@@ -1,5 +1,5 @@
 ![](https://lh4.googleusercontent.com/-PVw-ZUM9vV8/UuWeH51os0I/AAAAAAAAD6M/0Ikg7viJftQ/w1286-h566-no/hackathon-starter-logo.jpg)
-Hackathon Starter 
+Hackathon Starter Plus
 =======================
 
 [![Dependency Status](https://david-dm.org/sahat/hackathon-starter/status.svg?style=flat)](https://david-dm.org/sahat/hackathon-starter) [![Build Status](https://travis-ci.org/sahat/hackathon-starter.svg?branch=master)](https://travis-ci.org/sahat/hackathon-starter) [![Join the chat at https://gitter.im/sahat/hackathon-starter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/sahat/hackathon-starter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Thinkful Pair on Node](https://tf-assets-staging.s3.amazonaws.com/badges/thinkful_repo_badge.svg)](http://start.thinkful.com/node/)
@@ -80,11 +80,11 @@ Features
 - **Local Authentication** using Email and Password
 - **OAuth 1.0a Authentication** via Twitter
 - **OAuth 2.0 Authentication** via Facebook, Google, GitHub, LinkedIn, Instagram
-- Webpack asset pipeline for client-side JS
+- Webpack asset pipeline thanks to Laravel Mix, for client-side JS and CSS.
 - Flash notifications
 - MVC Project Structure
 - Node.js clusters support
-- Sass stylesheets (auto-compiled via middleware)
+- Sass stylesheets
 - Bootstrap 3 + Extra Themes
 - Socket.io
 - Contact Form (powered by Mailgun, Sendgrid or Mandrill)
@@ -166,6 +166,15 @@ For further information, please see the official documention for [managing depen
 
 The following was added to the default Hackathon Starter project:
 `yarn add assets-webpack-plugin babel-core babel-loader babel-plugin-transform-runtime babel-preset-es2015 babel-preset-stage-0 bootstrap-sass browser-sync browser-sync-webpack-plugin chunk-manifest-webpack-plugin express-rev jquery simple-pjax socket.io webpack webpack-dev-middleware webpack-dev-server webpack-manifest-plugin webpack-md5-hash`
+
+Client-side CSS and JS
+----------------------
+This fork of Hackathon Starter handles client-side asset compilation in a very different manner. In Hackathon Starter, all assets were placed under the `public` directory. In Hackathon Starter Plus, you'll find all of the assets
+under `assets`, eg. `assets/styles` and `assets/scripts`. You will need to keep two terminal sessions open, one to handle the asset compilation courtest of Webpack, and one complete, start your server in another terminal `npm start`.
+Use Nodemon to automatically restart your Express server if you wish.
+
+Bootstrap 4 has yet to be officially released, so for now we're sticking with v3, as most developers are somewhat familiar with the frameowrk. Also included is [https://github.com/basscss/basscss-sass](BassCSS), for its awesome utility classes which can seriously speed up your app development. If you'd rather not use BassCSS with Bootstrap, BassCSS can be disabled within `assets/styles/main.scss`.
+
 
 Obtaining API Keys
 -----------------
@@ -484,6 +493,12 @@ after all 3 websites have been scraped.
 function from Lodash. For example, this is how you would retrieve a
 Twitter token from database: `var token = _.find(req.user.tokens, { kind: 'twitter' });`,
 where 1st parameter is an array, and a 2nd parameter is an object to search for.
+
+Using Sass as a preprocessor can cause numerous issues when working on large scale CSS with multiple contributors. I recommend following these tips when using Sass.
+
+- Never use @extend. @extend is an anti-pattern, and Basscss is not intended to work with this functionality in Sass.
+- Avoid Mixins Mixins lead to unnecessary complexity, are generally poorly understood, often lead to code bloat, and do not align with Basscss's design principles.
+- Avoid Nesting Selectors To maintain the composability of Basscss, avoid nesting selectors as much as possible.
 
 FAQ
 ---
