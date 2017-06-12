@@ -16,12 +16,13 @@ mix
   .webpackConfig({devtool: 'source-map'})
   .autoload({
     jquery: ['$', 'window.jQuery', 'jQuery', 'jquery'],
-    tether: ['window.Tether', 'Tether']
+    // tether: ['window.Tether', 'Tether']
   })
   .setPublicPath('public')
   .js('assets/scripts/main.js', '/scripts')
   .sass('assets/styles/main.scss', '/styles')
-  .extract(['jquery', 'lodash', 'simple-pjax', 'tether', 'bootstrap'])
+  // .extract(['jquery', 'lodash', 'simple-pjax', 'tether', 'bootstrap'])
+  .extract(['jquery', 'lodash', 'simple-pjax', 'bootstrap-sass'])
 
 if (isProduction) mix.version()
 

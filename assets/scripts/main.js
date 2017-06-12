@@ -1,6 +1,6 @@
 // See webpack.config.js for third-party JS loading instructions.
 
-import 'bootstrap'
+import 'bootstrap-sass'
 
 import pjax from 'simple-pjax'
 import {Greetings} from './modules/greetings'

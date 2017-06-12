@@ -3,17 +3,16 @@ webpackJsonp([1,2],[
 /* 1 */,
 /* 2 */,
 /* 3 */,
-/* 4 */,
-/* 5 */
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function($, jQuery) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bootstrap__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bootstrap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_bootstrap__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bootstrap_sass__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bootstrap_sass___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_bootstrap_sass__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_simple_pjax__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_simple_pjax___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_simple_pjax__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_greetings__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_greetings__ = __webpack_require__(7);
 // See webpack.config.js for third-party JS loading instructions.
 
 
@@ -56,14 +55,14 @@ $(document).ready(function () {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0), __webpack_require__(0)))
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 7 */,
-/* 8 */
+/* 6 */,
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77,14 +76,14 @@ var Greetings = {
 };
 
 /***/ }),
-/* 9 */,
-/* 10 */
+/* 8 */,
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(5);
-module.exports = __webpack_require__(6);
+__webpack_require__(4);
+module.exports = __webpack_require__(5);
 
 
 /***/ })
-],[10]);
+],[9]);
 //# sourceMappingURL=main.js.map
