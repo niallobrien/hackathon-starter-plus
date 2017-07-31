@@ -26,7 +26,6 @@ const upload = multer({ dest: path.join(__dirname, 'uploads') });
  */
 dotenv.load({ path: '.env.example' });
 
-
 /**
  * API keys and Passport configuration.
  */
@@ -48,9 +47,10 @@ mongoose.connect(process.env.MONGODB_URI || process.env.MONGOLAB_URI);
 mongoose.connection.on('connected', () => {
   console.log('%s MongoDB connection established!', chalk.green('✓'));
 });
-mongoose.connection.on('error', () => {
+mongoose.connection.on('error', (err) => {
+  console.error(err);
   console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'));
-process.exit();
+  process.exit();
 });
 
 /**
@@ -87,7 +87,8 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
   store: new MongoStore({
     url: process.env.MONGODB_URI || process.env.MONGOLAB_URI,
-    autoReconnect: true
+    autoReconnect: true,
+    clear_interval: 3600
   })
 }));
 app.use(passport.initialize());

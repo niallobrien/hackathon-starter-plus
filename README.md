@@ -70,6 +70,7 @@ Table of Contents
     - [JavaScript Date](#-javascript-date-cheatsheet)
     - [Mongoose Cheatsheet](#mongoose-cheatsheet)
 - [Deployment](#deployment)
+- [Docker](#docker)
 - [Changelog](#changelog)
 - [Contributing](#contributing)
 - [License](#license)
@@ -177,7 +178,7 @@ Bootstrap 4 has yet to be officially released, so for now we're sticking with v3
 
 
 Obtaining API Keys
------------------
+------------------
 
 To use any of the included APIs or OAuth authentication methods, you will need
 to obtain appropriate credentials: Client ID, Client Secret, API Key, or
@@ -189,6 +190,7 @@ all API examples to get you up and running even faster. But don't forget to upda
 them with *your credentials* when you are ready to deploy an app.
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1000px-Google_2015_logo.svg.png" width="200">
+
 - Visit <a href="https://cloud.google.com/console/project" target="_blank">Google Cloud Console</a>
 - Click on the **Create Project** button
 - Enter *Project Name*, then click on **Create** button
@@ -214,6 +216,7 @@ The same goes for other providers.
 <hr>
 
 <img src="http://www.doit.ba/img/facebook.jpg" width="200">
+
 - Visit <a href="https://developers.facebook.com/" target="_blank">Facebook Developers</a>
 - Click **My Apps**, then select **Add a New App* from the dropdown menu
 - Select **Website** platform and enter a new name for your app
@@ -232,6 +235,7 @@ The same goes for other providers.
 <hr>
 
 <img src="https://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Logo.png" width="200">
+
 - Go to <a href="https://github.com/settings/profile" target="_blank">Account Settings</a>
 - Select **Applications** from the sidebar
 - Then inside **Developer applications** click on **Register new application**
@@ -243,6 +247,7 @@ The same goes for other providers.
 <hr>
 
 <img src="https://g.twimg.com/ios_homescreen_icon.png" width="90">
+
 - Sign in at <a href="https://apps.twitter.com/" target="_blank">https://apps.twitter.com</a>
 - Click **Create a new application**
 - Enter your application name, website and description
@@ -256,6 +261,7 @@ The same goes for other providers.
 <hr>
 
 <img src="http://www.danpontefract.com/wp-content/uploads/2014/02/logo-linkedin.png" width="200">
+
 - Sign in at <a href="https://developer.linkedin.com/" target="_blank">LinkedIn Developer Network</a>
 - From the account name dropdown menu select **API Keys**
  - *It may ask you to sign in once again*
@@ -273,13 +279,16 @@ The same goes for other providers.
 <hr>
 
 <img src="https://stripe.com/img/about/logos/logos/black@2x.png" width="200">
+
 - <a href="https://stripe.com/" target="_blank">Sign up</a> or log into your <a href="https://manage.stripe.com" target="_blank">dashboard</a>
 - Click on your profile and click on Account Settings
 - Then click on **API Keys**
 - Copy the **Secret Key**. and add this into `.env` file
+
 <hr>
 
 <img src="https://pixabay.com/static/uploads/photo/2015/05/26/09/37/paypal-784404_960_720.png" width="200">
+
 - Visit <a href="https://developer.paypal.com" target="_blank">PayPal Developer</a>
 - Log in to your PayPal account
 - Click **Applications > Create App** in the navigation bar
@@ -291,6 +300,7 @@ The same goes for other providers.
 <hr>
 
 <img src="http://33.media.tumblr.com/ffaf0075be879b3ab0b87f0b8bcc6814/tumblr_inline_n965bkOymr1qzxhga.png" width="200">
+
 - Go to <a href="https://developer.foursquare.com" target="_blank">Foursquare for Developers</a>
 - Click on **My Apps** in the top menu
 - Click the **Create A New App** button
@@ -302,6 +312,7 @@ The same goes for other providers.
 <hr>
 
 <img src="http://img4.wikia.nocookie.net/__cb20130520163346/logopedia/images/8/8d/Tumblr_logo_by_x_1337_x-d5ikwpp.png" width="200">
+
 - Go to <a href="http://www.tumblr.com/oauth/apps" target="_blank">http://www.tumblr.com/oauth/apps</a>
 - Once signed in, click **+Register application**
 - Fill in all the details
@@ -312,6 +323,7 @@ The same goes for other providers.
 <hr>
 
 <img src="http://www.technologytell.com/gaming/files/2012/01/steam_logo.jpg" width="200">
+
 - Go to <a href="http://steamcommunity.com/dev/apikey" target="_blank">http://steamcommunity.com/dev/apikey</a>
 - Sign in with your existing Steam account
 - Enter your *Domain Name*, then and click **Register**
@@ -320,6 +332,7 @@ The same goes for other providers.
 <hr>
 
 <img src="https://sendgrid.com/brand/sg-logo-300.png" width="200">
+
 - Go to <a href="https://sendgrid.com/user/signup" target="_blank">https://sendgrid.com/user/signup</a>
 - Sign up and **confirm** your account via the *activation email*
 - Then enter your SendGrid *Username* and *Password* into `.env` file
@@ -327,6 +340,7 @@ The same goes for other providers.
 <hr>
 
 <img src="https://raw.github.com/mailgun/media/master/Mailgun_Primary.png" width="200">
+
 - Go to <a href="http://www.mailgun.com" target="_blank">http://www.mailgun.com</a>
 - Sign up and add your *Domain Name*
 - From the domain overview, copy and paste the default SMTP *Login* and *Password* into `.env` file
@@ -334,6 +348,7 @@ The same goes for other providers.
 <hr>
 
 <img src="https://s3.amazonaws.com/ahoy-assets.twilio.com/global/images/wordmark.svg" width="200">
+
 - Go to <a href="https://www.twilio.com/try-twilio" target="_blank">https://www.twilio.com/try-twilio</a>
 - Sign up for an account.
 - Once logged into the dashboard, expand the link 'show api credentials'
@@ -549,14 +564,6 @@ and a new database step-by-step with mLab.
 ### Why Pug (Jade) instead of Handlebars?
 When I first started this project I didn't have any experience with Handlebars. Since then I have worked on Ember.js apps and got myself familiar with the Handlebars syntax. While it is true Handlebars is easier, because it looks like good old HTML, I have no regrets picking Jade over Handlebars. First off, it's the default template engine in Express, so someone who has built Express apps in the past already knows it. Secondly, I find `extends` and `block` to be indispensable, which as far as I know, Handlebars does not have out of the box. And lastly, subjectively speaking, Jade looks much cleaner and shorter than Handlebars, or any non-HAML style for that matter.
 
-### I don't need a sticky footer, can I delete it?
-Absolutely. But unlike a regular footer there is a bit more work involved.
-First, delete `#wrap` and `#footer` ID selectors and `html, body { height: 100%; }`
-from **main.less**. Next, delete `#wrap` and `#footer` lines from **layout.pug**
-(By the way, if no element is specified before class or id, Pug assumes it is
-a `div` element). Don't forget to indent everything under `#wrap` to the left
-once, since this project uses two spaces per block indentation.
-
 ### Why is there no Mozilla Persona as a sign-in option?
 If you would like to use **Persona** authentication strategy, use the
 [pull request #64](https://github.com/sahat/hackathon-starter/pull/64) as a
@@ -574,7 +581,7 @@ how a particular functionality works. Maybe you are just curious about
 how it works, or maybe you are lost and confused while reading the code,
 I hope it provides some guidance to you.
 
-###Custom HTML and CSS Design 101
+### Custom HTML and CSS Design 101
 
 [HTML5 UP](http://html5up.net/) has many beautiful templates that you can download for free.
 
@@ -595,7 +602,7 @@ Move all JavaScript files from `html5up-escape-velocity/js` to `public/js`. Then
 **Note:** Do not forget to update all the CSS and JS paths accordingly.
 
 Create a new file `escape-velocity.pug` and paste the Pug markup in `views` folder.
-Whenever you see the code `res.render('account/login')` - that means it will search for `views/account/login.jade` file.
+Whenever you see the code `res.render('account/login')` - that means it will search for `views/account/login.pug` file.
 
 Let's see how it looks. Create a new controller **escapeVelocity** inside `controllers/home.js`:
 
@@ -614,7 +621,7 @@ app.get('/escape-velocity', homeController.escapeVelocity);
 
 Restart the server (if you are not using **nodemon**), then you should see the new template at [http://localhost:3000/escape-velocity](http://localhost:3000/escape-velocity).
 
-I will stop right here, but if you would like to use this template as more than just a single page, take a look at how these Jade templates work: `layout.jade` - base template, `index.jade` - home page, `partials/header.jade` - Bootstrap navbar, `partials/footer.jade` - sticky footer. You will have to manually break it apart into smaller pieces. Figure out which part of the template you want to keep the same on all pages - that's your new `layout.jade`.
+I will stop right here, but if you would like to use this template as more than just a single page, take a look at how these Jade templates work: `layout.pug` - base template, `index.pug` - home page, `partials/header.pug` - Bootstrap navbar, `partials/footer.pug` - sticky footer. You will have to manually break it apart into smaller pieces. Figure out which part of the template you want to keep the same on all pages - that's your new `layout.pug`.
 Then, each page that changes, be it `index.pug`, `about.pug`, `contact.pug`
 will be embedded in your new `layout.pug` via `block content`. Use existing templates as a reference.
 
@@ -663,7 +670,7 @@ why an error has occurred. Here is a more general example of what express-valida
 
 To keep consistent with that style, you should pass all flash messages
 as `{ msg: 'My flash message' }` instead of a string. Otherwise you will just see an alert box
-without an error message. That is because, in **partials/flash.jade** template it will try to output
+without an error message. That is because, in **partials/flash.pug** template it will try to output
 `error.msg` (i.e. `"My flash message".msg`), in other words it will try to call a `msg` method on a *String* object,
 which will return *undefined*. Everything I just mentioned about errors, also applies
 to "info" and "success" flash messages, and you could even create a new one yourself, such as:
@@ -681,7 +688,7 @@ if messages.warning
       div= warning.msg
 ```
 
-`partials/flash.jade` is a partial template that contains how flash messages
+`partials/flash.pug` is a partial template that contains how flash messages
 are formatted. Previously, flash
 messages were scattered throughout each view that used flash messages
 (contact, login, signup, profile), but now, thankfully it is uses a *DRY* approach.
@@ -689,12 +696,13 @@ messages were scattered throughout each view that used flash messages
 The flash messages partial template is *included* in the `layout.pug`, along with footer and navigation.
 ```jade
 body
-  #wrap
-    include partials/navigation
+    include partials/header
+
     .container
       include partials/flash
       block content
-  include partials/footer
+
+    include partials/footer
 ```
 
 If you have any further questions about flash messages,
@@ -711,7 +719,7 @@ are what's called middleware. Think of middleware as a door. If this door preven
 continuing forward, you won't get to your callback function. One such example is a route that requires authentication.
 
 ```js
-app.get('/account', passportConf.isAuthenticated, userController.getAccount);
+app.get('/account', passportConfig.isAuthenticated, userController.getAccount);
 ```
 
 It always goes from left to right. A user visits `/account` page. Then `isAuthenticated` middleware
@@ -764,8 +772,8 @@ And here is how a route would look if it required an *authentication* and an *au
 
 ```js
 app.route('/api/twitter')
-  .all(passportConf.isAuthenticated)
-  .all(passportConf.isAuthorized)
+  .all(passportConfig.isAuthenticated)
+  .all(passportConfig.isAuthorized)
   .get(apiController.getTwitter)
   .post(apiController.postTwitter)
 ```
@@ -875,6 +883,11 @@ If you need to use socket.io in your app, please continue reading.
 First you need to install socket.io:
 ```js
 npm install socket.io --save
+```
+
+Or, again, if you use Yarn:
+```js
+yarn add socket.io
 ```
 
 Replace `const app = express();` with the following code:
@@ -1043,7 +1056,7 @@ p.catch(function(reason) { /* handle rejection */ });
 The `then()` method returns a Promise. It takes 2 arguments: callback for the success & failure cases.
 
 ```js
-p.then(function(value) { /* handle fulfillment */, function(reason) { /* handle rejection */ });
+p.then(function(value) { /* handle fulfillment */ }, function(reason) { /* handle rejection */ });
 ```
 
 The `Promise.all(iterable)` method returns a promise that resolves when all of the promises in the iterable argument have resolved, or rejects with the reason of the first passed promise that rejects.
@@ -1157,7 +1170,7 @@ var yesterday = date.setDate(date.getDate() - 1);
 
 :top: <sub>[**back to top**](#table-of-contents)</sub>
 
-###Mongoose Cheatsheet
+### Mongoose Cheatsheet
 
 #### Find all users:
 ```js
@@ -1197,6 +1210,29 @@ User.aggregate({ $group: { _id: null, total: { $sum: '$votes' } } }, (err, votes
 });
 ```
 :top: <sub>[**back to top**](#table-of-contents)</sub>
+
+Docker
+----------
+
+You will need docker and docker-compose installed to build the application. 
+
+- [Docker installation](https://docs.docker.com/engine/installation/)
+
+- [Common problems setting up docker](https://docs.docker.com/toolbox/faqs/troubleshoot/)
+
+After installing docker, start the application with the following commands : 
+
+```
+# To build the project for the first time or when you add dependencies
+docker-compose build web  
+
+# To start the application (or to restart after making changes to the source code)
+docker-compose up web
+
+```
+
+To view the app, find your docker ip address + port 3000 ( this will typically be http://192.168.99.100:3000/ ).
+
 
 Deployment
 ----------
@@ -1248,7 +1284,7 @@ listed below.
 - First, install this Ruby gem: `sudo gem install rhc` :gem:
 - Run `rhc login` and enter your OpenShift credentials
 - From your app directory run `rhc app create MyApp nodejs-0.10`
- - **Note:** *MyApp* is the name your app (no spaces)
+ - **Note:** *MyApp* is the name of your app (no spaces)
 - Once that is done, you will be provided with **URL**, **SSH** and **Git Remote** links
 - Visit provided **URL** and you should see the *Welcome to your Node.js application on OpenShift* page
 - Copy and and paste **Git Remote** into `git remote add openshift YOUR_GIT_REMOTE`
@@ -1296,24 +1332,108 @@ Add this to `package.json`, after *name* and *version*. This is necessary becaus
  - **Note:** *You will be prompted for the password you created earlier*
 - On **Deployments** tab of your Windows Azure Web App, you will see the deployment history
 
-<img src="http://www.comparethecloud.net/wp-content/uploads/2014/06/ibm-bluemix_pr-030514.jpg" width="200">
+------
 
-- Go to [Codename: Bluemix](http://bluemix.net) to signup for the free trial, or login with your *IBM id*
-- Install [Cloud Foundry CLI](https://github.com/cloudfoundry/cli)
-- Navigate to your **hackathon-starter** directory and then run `cf push [your-app-name] -m 512m` command to deploy the application
- - **Note:** You must specify a unique application name in place of `[your-app-name]`
-- Run `cf create-service mongodb 100 [your-service-name]` to create a [MongoDB service](https://www.ng.bluemix.net/docs/#services/MongoDB/index.html#MongoDB)
-- Run `cf bind-service [your-app-name] [your-service-name]` to associate your application with a service created above
-- Run `cf files [your-app-name] logs/env.log` to see the *environment variables created for MongoDB.
-- Copy the **MongoDB URI** that should look something like the following: `mongodb://68638358-a3c6-42a1-bae9-645b607d55e8:46fb97e6-5ce7-4146-9a5d-d623c64ff1fe@192.155.243.23:10123/db`
-- Then set it as an environment variable for your application by running `cf set-env [your-app-name] MONGODB [your-mongodb-uri]`
-- Run `cf restart [your-app-name]` for the changes to take effect.
-- Visit your starter app at **http://[your-app-name].ng.bluemix.net**
-- Done!
 
-**Note:** Alternative directions, including how to setup the project with a DevOps pipeline are available at [http://ibm.biz/hackstart](http://ibm.biz/hackstart).
-A longer version of these instructions with screenshots is available at [http://ibm.biz/hackstart2](http://ibm.biz/hackstart2).
-Also, be sure to check out the [Jump-start your hackathon efforts with DevOps Services and Bluemix](https://www.youtube.com/watch?v=twvyqRnutss) video.
+# IBM Bluemix Cloud Platform
+
+1. Create a Bluemix Account
+
+    [Sign up](https://console.ng.bluemix.net/registration/?target=%2Fdashboard%2Fapps) for Bluemix, or use an existing account.  
+
+1. Download and install the [Cloud Foundry CLI](https://github.com/cloudfoundry/cli) to push your applications to Bluemix.
+
+1. Create a `manifest.yml` file in the root of your application.
+  ```
+  applications:
+  - name:      <your-app-name>
+    host:      <your-app-host>
+    memory:    128M
+    services:
+    - myMongo-db-name
+  ```
+
+  The host you use will determinate your application url initially, e.g. `<host>.mybluemix.net`.  
+  The service name 'myMongo-db-name' is a declaration of your MongoDB service.  If you are using other services like Watson for example, then you would declare them the same way.
+
+1. Connect and login to Bluemix via the Cloud-foundry CLI
+  ```
+  $ cf login -a https://api.ng.bluemix.net
+  ```
+
+1. Create a [MongoDB service](https://www.ng.bluemix.net/docs/#services/MongoDB/index.html#MongoDB)
+  ```
+  $ cf create-service mongodb 100 [your-service-name]
+  ```
+  **Note:** this is a free and experiment verion of MongoDB instance.  
+  Use the MongoDB by Compose instance for production applications:
+  ```
+  $ cf create-service compose-for-mongodb Standard [your-service-name]'
+  ```
+
+
+1. Push the application
+
+    ```
+    $ cf push
+    ```
+    ```
+    $ cf env <your-app-name >
+    (To view the *environment variables* created for your application)
+
+    ```
+
+**Done**, now go to the staging domain(`<host>.mybluemix.net`.) and see your app running.  
+
+[Cloud Foundry Commands](https://console.ng.bluemix.net/docs/cli/reference/bluemix_cli/index.html)  
+[More Bluemix samples](https://ibm-bluemix.github.io/)  
+[Simple ToDo app in a programming language of your choice](https://github.com/IBM-Bluemix/todo-apps)  
+
+
+
+## IBM Watson
+Be sure to check out the full list of Watson services to forwarder enhance your application functionality with a little effort. Watson services are easy to get going, it is simply an RESTful API call. Here is an example of a [Watson Toner Analyzer](https://tone-analyzer-demo.mybluemix.net/) to understand the emotional context of a piece of text that you send to Watson.
+
+
+
+### Watson catalog of services     
+
+**<img src="https://kpprod1.alchemyapi.com/images/alchemy_logo_24.png" width="25"> AlchemyAPI** - An AlchemyAPI service that analyzes your unstructured text and image content.      
+
+**<img src="http://csbmixbroker.mybluemix.net/commerce_24.png" width="25"> Cognitive Commerce** - Cognitive Commerce is a service provided by Cognitive Scale.  
+
+**<img src="http://csbmixbroker.mybluemix.net/graph_24.png" width="25"> Cognitive Graph** - Cognitive Graph is a service provided by Cognitive Scale.  
+
+**<img src="http://csbmixbroker.mybluemix.net/insights_24.png" width="25"> Cognitive Insights** - Cognitive Insights™ is a service provided by Cognitive Scale.  
+
+**<img src="https://wbi.mybluemix.net/icons/conversation.svg?version=2" width="25"> Conversation** - 	Add a natural language interface to your application to automate interactions with your end users. Common applications include virtual agents and chat bots that can integrate and communicate on any channel or device.  
+
+**<img src="https://wbi.mybluemix.net/icons/discovery.svg" width="25"> Discovery** - Add a cognitive search and content analytics engine to applications.  
+
+**<img src="https://wbi.mybluemix.net/icons/document-conversion.svg?version=2" width="25"> Document Conversion** - Converts a HTML, PDF, or Microsoft Word™ document into a normalized HTML, plain text, or a set of JSON-formatted Answer units.  
+
+**<img src="https://wbi.mybluemix.net/icons/language-translator.svg?version=4" width="20" width="25"> Language Translator** - Translate text from one language to another for specific domains.
+
+**<img src="https://wbi.mybluemix.net/icons/natural-language-classifier.svg?version=2" width="25"> Natural Language Classifier** - Natural Language Classifier performs natural language classification on question texts. A user would be able to train their data and the predict the appropriate class for a input question.  
+
+**<img src="https://wbi.mybluemix.net/icons/personality-insights.svg?version=2" width="25"> Personality Insights** - The Watson Personality Insights derives insights from transactional and social media data to identify psychological traits.  
+
+**<img src="https://wbi.mybluemix.net/icons/retrieve-and-rank.svg?version=2" width="25"> Retrieve and Rank** - Add machine learning enhanced search capabilities to your application.   
+
+**<img src="https://wbi.mybluemix.net/icons/speech-to-text.svg?version=2" width="25"> Speech to Text** - Low-latency, streaming transcription.  
+
+**<img src="https://wbi.mybluemix.net/icons/text-to-speech.svg?version=2" width="25"> Text to Speech** - Synthesizes natural-sounding speech from text.  
+
+**<img src="https://wbi.mybluemix.net/icons/tone-analyzer.svg?version=2" width="25"> Tone Analyzer** - Tone Analyzer uses linguistic analysis to detect three types of tones from communications: emotion, social, and language. This insight can then be used to drive high impact communications.  
+
+**<img src="https://wbi.mybluemix.net/icons/retrieve-and-rank.svg?version=2" width="25" > Tradeoff Analytics** - Helps make better choices under multiple conflicting goals. Combines smart visualization and recommendations for tradeoff exploration.    
+
+**<img src="https://kpprod1.alchemyapi.com/images/vis_rec.svg" width="25"> Visual Recognition** - Find meaning in visual content! Analyze images for scenes, objects, faces, and other content. Choose a default model off the shelf, or create your own custom classifier. Find similar images within a collection. Develop smart applications that analyze the visual content of images or video frames to understand what is happening in a scene.  
+
+
+
+[Click here](https://www.ibm.com/watson/developercloud/services-catalog.html) for live demos of each Watson service.
+
 
 ---
 
@@ -1637,7 +1757,7 @@ project, I cannot accept every pull request. Please open an issue before
 submitting a pull request. This project uses
 [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) with a
 few minor exceptions. If you are submitting a pull request that involves
-Jade templates, please make sure you are using *spaces*, not tabs.
+Pug templates, please make sure you are using *spaces*, not tabs.
 
 License
 -------

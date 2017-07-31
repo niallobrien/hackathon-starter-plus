@@ -15,12 +15,12 @@
     "hot": "cross-env NODE_ENV=development webpack-dev-server --inline --hot",
     "production": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "prod": "npm run production",
-    "test": "mocha --reporter spec"
+    "test": "mocha --reporter spec",
+    "eslint": "eslint **/*.js"
   },
   "dependencies": {
-    "async": "^2.1.2",
-    "basscss-sass": "^4.0.0",
     "bcrypt-nodejs": "^0.0.3",
+    "bluebird": "^3.4.7",
     "body-parser": "^1.15.2",
     "chalk": "^1.1.3",
     "cheerio": "^0.22.0",
@@ -28,18 +28,16 @@
     "clockwork": "^0.1.4",
     "compression": "^1.6.2",
     "connect-mongo": "^1.3.2",
-    "cross-env": "^3.2.4",
-    "dotenv": "^2.0.0",
+    "dotenv": "^4.0.0",
     "errorhandler": "^1.4.3",
     "express": "^4.14.0",
     "express-flash": "^0.0.2",
     "express-rev": "^0.1.2",
     "express-session": "^1.14.2",
     "express-status-monitor": "^0.1.5",
-    "express-validator": "^2.21.0",
+    "express-validator": "^3.1.2",
     "fbgraph": "^1.3.0",
-    "font-awesome": "^4.7.0",
-    "github": "^6.0.2",
+    "github": "^9.2.0",
     "instagram-node": "^0.5.8",
     "jquery": "^3.1.1",
     "laravel-mix": "^0.8.8",
@@ -52,8 +50,7 @@
     "multer": "^1.2.0",
     "node-foursquare": "^0.3.0",
     "node-linkedin": "^0.5.4",
-    "node-sass-middleware": "^0.9.8",
-    "nodemailer": "^2.6.4",
+    "nodemailer": "^3.1.7",
     "passport": "0.3.2",
     "passport-facebook": "^2.1.1",
     "passport-github": "^1.1.0",
@@ -73,7 +70,7 @@
     "tumblr.js": "^1.1.1",
     "twilio": "^3.3.1-edge",
     "twit": "^2.2.5",
-    "validator": "^6.1.0"
+    "validator": "^7.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.21.0",
@@ -81,14 +78,15 @@
     "babel-preset-es2015": "^6.18.0",
     "bootstrap-sass": "^3.3.7",
     "chai": "^3.5.0",
-    "eslint": "^3.9.1",
-    "eslint-config-airbnb-base": "^10.0.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.1.3",
+    "eslint-plugin-chai-friendly": "^0.2.0",
     "eslint-plugin-import": "^2.1.0",
     "mocha": "^3.1.2",
     "sass-loader": "^6.0.5",
-    "sinon": "^1.17.6",
+    "sinon": "^2.0.0",
     "sinon-mongoose": "^1.3.0",
-    "supertest": "^2.0.1",
+    "supertest": "^3.0.0"
     "webpack": "^2.2.1",
     "webpack-manifest-plugin": "^1.1.0"
   },
@@ -101,7 +99,17 @@
       "no-underscore-dangle": 0,
       "no-shadow": 0,
       "no-console": 0,
-      "no-plusplus": 0
-    }
+      "no-plusplus": 0,
+      "no-unused-expressions": 0,
+      "chai-friendly/no-unused-expressions": 2
+    },
+    "env": {
+      "jasmine": true,
+      "mocha": true,
+      "node": true
+    },
+    "plugins": [
+      "chai-friendly"
+    ]
   }
 }
