@@ -26,6 +26,14 @@ const upload = multer({ dest: path.join(__dirname, 'uploads') });
 dotenv.load({ path: '.env.example' });
 
 /**
+ * Controllers (route handlers).
+ */
+const homeController = require('./controllers/home');
+const userController = require('./controllers/user');
+const apiController = require('./controllers/api');
+const contactController = require('./controllers/contact');
+
+/**
  * API keys and Passport configuration.
  */
 const passportConfig = require('./config/passport');
@@ -55,7 +63,8 @@ mongoose.connection.on('error', (err) => {
 /**
  * Express configuration.
  */
-app.set('port', process.env.PORT || 1337);
+app.set('host', process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0');
+app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 1337);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
@@ -118,7 +127,7 @@ app.use((req, res, next) => {
       !req.path.match(/\./)) {
     req.session.returnTo = req.path;
   } else if (req.user &&
-      req.path == '/account') {
+      req.path === '/account') {
     req.session.returnTo = req.path;
   }
   next();
@@ -151,9 +160,9 @@ io.on('connection', (socket) => {
 /**
  * Start Express server.
  */
-server.listen(app.get('port'), () => {
-  const host = (app.get('env') === 'development') ? 'http://localhost:%d' : 'port %d';
-  console.log('%s Express server listening on ' + host + ' in %s mode.', chalk.green('✓'), app.get('port'), app.get('env'));
+app.listen(app.get('port'), () => {
+  console.log('%s App is running at http://localhost:%d in %s mode', chalk.green('✓'), app.get('port'), app.get('env'));
+  console.log('  Press CTRL-C to stop\n');
 });
 
 module.exports = app;

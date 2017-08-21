@@ -1,4 +1,4 @@
-webpackJsonp([1,2],[
+webpackJsonp([1],[
 /* 0 */,
 /* 1 */,
 /* 2 */,
@@ -7,8 +7,8 @@ webpackJsonp([1,2],[
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function($, jQuery) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bootstrap_sass__ = __webpack_require__(1);
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* WEBPACK VAR INJECTION */(function($, jQuery) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bootstrap_sass__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bootstrap_sass___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_bootstrap_sass__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_simple_pjax__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_simple_pjax___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_simple_pjax__);

@@ -132,16 +132,13 @@ cd myproject
 # Install NPM dependencies
 npm install
 
-# Or, if you prefer to use `yarn` instead of `npm`
-yarn install
-
 # To compile the client-side JS
 npm run dev
 
 # Or compile the client-side JS and watch for changes
 npm run watch
 
-# Then simply start your app (in another terminal)
+# Then simply start your app
 node app.js
 
 # Optionalliy, to build your assets for production (styles and scripts)
@@ -155,16 +152,6 @@ save you a lot of time in the long run, because you won't need to manually
 restart the server each time you make a small change in code. To install, run
 `sudo npm install -g nodemon`.
 
-Yarn vs NPM
------------
-Yarn is a new JavaScript package manager built by Facebook, Google, Exponent and Tilde. Yarn is not an attempt to replace `npm`, 
-it's simply an alternative CLI client for fetching modules from the npm registry but it does have some unique benefits over using `npm`,
-most noticeably speed and consistency (via a lock file which ensures that only specific versions of dependencies are installed).
-Hackathon Starter includes a `yarn.lock` file by default and as project dependencies are updated, this file will be updated to reflect those changes.
-
-To upgrade your local dependencies using Yarn, simply run `yarn upgrade`. This will update all dependencies to their latest version based on the [version range](https://docs.npmjs.com/getting-started/semantic-versioning#semver-for-consumers) specified in the `package.json` file. The yarn.lock file will be recreated as well.
-For further information, please see the official documention for [managing dependencies](https://yarnpkg.com/en/docs/managing-dependencies) and [upgrading dependencies](https://yarnpkg.com/en/docs/cli/upgrade). This [Yarn vs NPM](https://www.sitepoint.com/yarn-vs-npm/) article by SitePoint also has some very useful information.
-
 The following was added to the default Hackathon Starter project:
 `yarn add assets-webpack-plugin babel-core babel-loader babel-plugin-transform-runtime babel-preset-es2015 babel-preset-stage-0 bootstrap-sass browser-sync browser-sync-webpack-plugin chunk-manifest-webpack-plugin express-rev jquery simple-pjax socket.io webpack webpack-dev-middleware webpack-dev-server webpack-manifest-plugin webpack-md5-hash`
 
@@ -174,8 +161,7 @@ This fork of Hackathon Starter handles client-side asset compilation in a very d
 under `assets`, eg. `assets/styles` and `assets/scripts`. You will need to keep two terminal sessions open, one to handle the asset compilation courtest of Webpack, and one complete, start your server in another terminal `npm start`.
 Use Nodemon to automatically restart your Express server if you wish.
 
-Bootstrap 4 has yet to be officially released, so for now we're sticking with v3, as most developers are somewhat familiar with the frameowrk. Also included is [https://github.com/basscss/basscss-sass](BassCSS), for its awesome utility classes which can seriously speed up your app development. If you'd rather not use BassCSS with Bootstrap, BassCSS can be disabled within `assets/styles/main.scss`.
-
+Bootstrap 4 has yet to be officially released, so for now we're sticking with v3, as most developers are somewhat familiar with the framework. Also included is [https://github.com/basscss/basscss-sass](BassCSS), for its awesome utility classes which can seriously speed up your app development. If you'd rather not use BassCSS with Bootstrap, BassCSS can be disabled within `assets/styles/main.scss`.
 
 Obtaining API Keys
 ------------------
@@ -223,7 +209,7 @@ The same goes for other providers.
 - Click on the **Create New Facebook App ID** button
 - Choose a **Category** that best describes your app
 - Click on **Create App ID** button
-- In the upper right corner click on **Skip Quick Star**
+- In the upper right corner click on **Skip Quick Start**
 - Copy and paste *App ID* and *App Secret* keys into `.env`
  - **Note:** *App ID* is **clientID**, *App Secret* is **clientSecret**
 - Click on the *Settings* tab in the left nav, then click on **+ Add Platform**
@@ -380,7 +366,7 @@ Project Structure
 | .env.example                       | Your API keys, tokens, passwords and database URI.           |
 | app.js                             | The main application file.                                   |
 | package.json                       | NPM dependencies.                                            |
-| yarn.lock                          | Contains exact versions of NPM dependencies in package.json. |
+| package-lock.lock                          | Contains exact versions of NPM dependencies in package.json. |
 
 **Note:** There is no preference how you name or structure your views.
 You could place all your templates in a top-level `views` directory without
@@ -512,8 +498,8 @@ where 1st parameter is an array, and a 2nd parameter is an object to search for.
 Using Sass as a preprocessor can cause numerous issues when working on large scale CSS with multiple contributors. I recommend following these tips when using Sass.
 
 - Never use @extend. @extend is an anti-pattern, and Basscss is not intended to work with this functionality in Sass.
-- Avoid Mixins Mixins lead to unnecessary complexity, are generally poorly understood, often lead to code bloat, and do not align with Basscss's design principles.
-- Avoid Nesting Selectors To maintain the composability of Basscss, avoid nesting selectors as much as possible.
+- Avoid Mixins. Mixins lead to unnecessary complexity, are generally poorly understood, often lead to code bloat, and do not align with Basscss's design principles.
+- Avoid Nesting Selectors. To maintain the composability of Basscss, avoid nesting selectors as much as possible.
 
 FAQ
 ---
@@ -712,7 +698,7 @@ or send a pull request if you  would like to include something that I missed.
 <hr>
 
 ### How do I create a new page?
-A more correct way to be to say "How do I create a new route". The routes file `config/routes.js` contains all the routes.
+A more correct way would to be to say "How do I create a new route". The routes file `config/routes.js` contains all the routes.
 Each route has a callback function associated with it. Sometimes you will see 3 or more arguments
 to routes. In cases like that, the first argument is still a URL string, while middle arguments
 are what's called middleware. Think of middleware as a door. If this door prevents you from
@@ -883,11 +869,6 @@ If you need to use socket.io in your app, please continue reading.
 First you need to install socket.io:
 ```js
 npm install socket.io --save
-```
-
-Or, again, if you use Yarn:
-```js
-yarn add socket.io
 ```
 
 Replace `const app = express();` with the following code:
@@ -1249,6 +1230,7 @@ listed below.
 ### 1-Step Deployment with Heroku
 
 <img src="http://blog.exadel.com/wp-content/uploads/2013/10/heroku-Logo-1.jpg" width="200">
+
 - Download and install [Heroku Toolbelt](https://toolbelt.heroku.com/)
 - In terminal, run `heroku login` and enter your Heroku credentials
 - From *your app* directory run `heroku create`
@@ -1260,6 +1242,7 @@ listed below.
 ---
 
 <img src="http://i.imgur.com/7KnCa5a.png" width="200">
+
 - Open [mlab.com](https://mlab.com) website
 - Click the yellow **Sign up** button
 - Fill in your user information then hit **Create account**
@@ -1279,8 +1262,8 @@ listed below.
 
 **Note:** As an alternative to mLab, there is also [Compose](https://www.compose.io/).
 
-
 <img src="http://www.opencloudconf.com/images/openshift_logo.png" width="200">
+
 - First, install this Ruby gem: `sudo gem install rhc` :gem:
 - Run `rhc login` and enter your OpenShift credentials
 - From your app directory run `rhc app create MyApp nodejs-0.10`
