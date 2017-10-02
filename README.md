@@ -954,6 +954,7 @@ $(document).ready(function() {
 ```
 
 And we are done!
+
 Cheatsheets
 -----------
 
@@ -1084,6 +1085,60 @@ class Person {
 
 :gift: **Credits**: [DuckDuckGo](https://duckduckgo.com/?q=es6+cheatsheet&ia=cheatsheet&iax=1) and [@DrkSephy](https://github.com/DrkSephy/es6-cheatsheet).
 
+Modern JS Cheatsheet:
+https://github.com/mbeaudru/modern-js-cheatsheet
+
+ES6 Cheatsheet:
+https://github.com/DrkSephy/es6-cheatsheet
+
+ES6 Tutorial:
+https://codeburst.io/es6-tutorial-for-beginners-5f3c4e7960be
+
+:top: <sub>[**back to top**](#table-of-contents)</sub>
+
+### Pug Cheatsheet
+https://codepen.io/mimoduo/post/pug-js-cheat-sheet
+
+### Mongoose Cheatsheet
+
+#### Find all users:
+```js
+User.find((err, users) => {
+  console.log(users);
+});
+```
+
+#### Find a user by email:
+```js
+let userEmail = 'example@gmail.com';
+User.findOne({ email: userEmail }, (err, user) => {
+  console.log(user);
+});
+```
+
+#### Find 5 most recent user accounts:
+```js
+User
+  .find()
+  .sort({ _id: -1 })
+  .limit(5)
+  .exec((err, users) => {
+    console.log(users);
+  });
+```
+
+#### Get total count of a field from all documents:
+Let's suppose that each user has a `votes` field and you would like to count
+the total number of votes in your database across all users. One very
+inefficient way would be to loop through each document and manually accumulate
+the count. Or you could use [MongoDB Aggregation Framework](https://docs.mongodb.org/manual/core/aggregation-introduction/) instead:
+
+```js
+User.aggregate({ $group: { _id: null, total: { $sum: '$votes' } } }, (err, votesCount)  => {
+  console.log(votesCount.total);
+});
+```
+
 :top: <sub>[**back to top**](#table-of-contents)</sub>
 
 ### <img src="http://i.stack.imgur.com/Mmww2.png" height="34" align="top"> JavaScript Date Cheatsheet
@@ -1149,47 +1204,6 @@ var today = new Date();
 var yesterday = date.setDate(date.getDate() - 1);
 ```
 
-:top: <sub>[**back to top**](#table-of-contents)</sub>
-
-### Mongoose Cheatsheet
-
-#### Find all users:
-```js
-User.find((err, users) => {
-  console.log(users);
-});
-```
-
-#### Find a user by email:
-```js
-let userEmail = 'example@gmail.com';
-User.findOne({ email: userEmail }, (err, user) => {
-  console.log(user);
-});
-```
-
-#### Find 5 most recent user accounts:
-```js
-User
-  .find()
-  .sort({ _id: -1 })
-  .limit(5)
-  .exec((err, users) => {
-    console.log(users);
-  });
-```
-
-#### Get total count of a field from all documents:
-Let's suppose that each user has a `votes` field and you would like to count
-the total number of votes in your database across all users. One very
-inefficient way would be to loop through each document and manually accumulate
-the count. Or you could use [MongoDB Aggregation Framework](https://docs.mongodb.org/manual/core/aggregation-introduction/) instead:
-
-```js
-User.aggregate({ $group: { _id: null, total: { $sum: '$votes' } } }, (err, votesCount)  => {
-  console.log(votesCount.total);
-});
-```
 :top: <sub>[**back to top**](#table-of-contents)</sub>
 
 Docker
