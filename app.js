@@ -18,12 +18,12 @@ const passport = require('passport');
 const expressValidator = require('express-validator');
 const expressStatusMonitor = require('express-status-monitor');
 const multer = require('multer');
-const upload = multer({ dest: path.join(__dirname, 'uploads') });
+const upload = multer({dest: path.join(__dirname, 'uploads')});
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
  */
-dotenv.load({ path: '.env.example' });
+dotenv.load({path: '.env.example'});
 
 /**
  * Controllers (route handlers).
@@ -83,12 +83,16 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(expressStatusMonitor({ websocket: io, port: socketIoPort }));
+app.use(expressStatusMonitor({websocket: io, port: socketIoPort}));
 app.use(compression());
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressValidator());
+
+// By default the session cookie will expire on browser close.
+// To set the session cookie to not expire anytime:
+// https://stackoverflow.com/questions/18760461/nodejs-how-to-set-express-session-cookie-not-to-expire-anytime
 app.use(session({
   resave: true,
   saveUninitialized: true,
@@ -99,6 +103,7 @@ app.use(session({
     clear_interval: 3600
   })
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
@@ -121,18 +126,18 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
   // After successful login, redirect back to the intended page
   if (!req.user &&
-      req.path !== '/login' &&
-      req.path !== '/signup' &&
-      !req.path.match(/^\/auth/) &&
-      !req.path.match(/\./)) {
+    req.path !== '/login' &&
+    req.path !== '/signup' &&
+    !req.path.match(/^\/auth/) &&
+    !req.path.match(/\./)) {
     req.session.returnTo = req.path;
   } else if (req.user &&
-      req.path === '/account') {
+    req.path === '/account') {
     req.session.returnTo = req.path;
   }
   next();
 });
-app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
+app.use(express.static(path.join(__dirname, 'public'), {maxAge: 31557600000}));
 
 /**
  * Primary app routes.
@@ -148,7 +153,7 @@ app.use(errorHandler());
  * Socket.io.
  */
 io.on('connection', (socket) => {
-  socket.emit('greet', { hello: 'Hey there browser!' });
+  socket.emit('greet', {hello: 'Hey there browser!'});
   socket.on('respond', (data) => {
     console.log(data);
   });
