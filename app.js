@@ -56,8 +56,8 @@ mongoose.connection.on('connected', () => {
 });
 mongoose.connection.on('error', (err) => {
   console.error(err);
-  console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'));
-  process.exit();
+console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'));
+process.exit();
 });
 
 /**
@@ -72,15 +72,15 @@ app.set('view engine', 'pug');
 app.use((req, res, next) => {
   app.locals.filters = {
     'mix': (text, options) => {
-      if (!text) return
-      text = text.replace(/["']/g, '')
+    if (!text) return
+text = text.replace(/["']/g, '')
 
-      const manifest = require(__dirname + '/public/mix-manifest.json')
-      if (options.css) return `<link rel="stylesheet" href="${manifest[text]}">`
-      if (options.js) return `<script type="text/javascript" src="${manifest[text]}"></script>`
-    }
-  }
-  next();
+const manifest = require(__dirname + '/public/mix-manifest.json')
+if (options.css) return `<link rel="stylesheet" href="${manifest[text]}">`
+if (options.js) return `<script type="text/javascript" src="${manifest[text]}"></script>`
+}
+}
+next();
 });
 
 app.use(expressStatusMonitor({ websocket: io, port: socketIoPort }));
@@ -89,6 +89,10 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressValidator());
+
+// By default the session cookie will expire on browser close.
+// To set the session cookie to not expire anytime:
+// https://stackoverflow.com/questions/18760461/nodejs-how-to-set-express-session-cookie-not-to-expire-anytime
 app.use(session({
   resave: true,
   saveUninitialized: true,
@@ -99,38 +103,39 @@ app.use(session({
     clear_interval: 3600
   })
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use((req, res, next) => {
   if (req.path === '/api/upload') {
-    next();
-  } else {
-    lusca.csrf()(req, res, next);
-  }
+  next();
+} else {
+  lusca.csrf()(req, res, next);
+}
 });
 app.use(lusca.xframe('SAMEORIGIN'));
 app.use(lusca.xssProtection(true));
 app.use((req, res, next) => {
   // provide host to construct url to socketio (port 3001)
   res.locals.hostname = req.protocol + '://' + req.hostname
-  res.locals.fullHostname = req.protocol + '://' + req.hostname + ':' + req.app.settings.port
-  res.locals.user = req.user;
-  next();
+res.locals.fullHostname = req.protocol + '://' + req.hostname + ':' + req.app.settings.port
+res.locals.user = req.user;
+next();
 });
 app.use((req, res, next) => {
   // After successful login, redirect back to the intended page
   if (!req.user &&
-      req.path !== '/login' &&
-      req.path !== '/signup' &&
-      !req.path.match(/^\/auth/) &&
-      !req.path.match(/\./)) {
-    req.session.returnTo = req.path;
-  } else if (req.user &&
-      req.path === '/account') {
-    req.session.returnTo = req.path;
-  }
-  next();
+req.path !== '/login' &&
+req.path !== '/signup' &&
+!req.path.match(/^\/auth/) &&
+!req.path.match(/\./)) {
+  req.session.returnTo = req.path;
+} else if (req.user &&
+  req.path === '/account') {
+  req.session.returnTo = req.path;
+}
+next();
 });
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
 
@@ -149,12 +154,12 @@ app.use(errorHandler());
  */
 io.on('connection', (socket) => {
   socket.emit('greet', { hello: 'Hey there browser!' });
-  socket.on('respond', (data) => {
-    console.log(data);
-  });
-  socket.on('disconnect', () => {
-    console.log('Socket disconnected');
-  });
+socket.on('respond', (data) => {
+  console.log(data);
+});
+socket.on('disconnect', () => {
+  console.log('Socket disconnected');
+});
 });
 
 /**
@@ -162,7 +167,7 @@ io.on('connection', (socket) => {
  */
 app.listen(app.get('port'), () => {
   console.log('%s App is running at http://localhost:%d in %s mode', chalk.green('✓'), app.get('port'), app.get('env'));
-  console.log('  Press CTRL-C to stop\n');
+console.log('  Press CTRL-C to stop\n');
 });
 
 module.exports = app;
