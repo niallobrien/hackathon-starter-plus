@@ -1,7 +1,7 @@
 // See webpack.config.js for third-party JS loading instructions.
 
-import 'bootstrap-sass'
 
+import 'bootstrap-sass'
 import pjax from 'simple-pjax'
 import {Greetings} from './modules/greetings'
 
@@ -31,7 +31,7 @@ $(document).ready(function () {
   console.log('jQuery version: ' + jQuery.fn.jquery)
   Greetings.to('awesome developer')
 
-  var socket = io.connect(window.location.hostname + ':3001')
+  let socket = io.connect(window.location.hostname + ':3001')
   socket.on('greet', (data) => {
     console.log(data)
     socket.emit('respond', { message: 'Hey there, server!' })
