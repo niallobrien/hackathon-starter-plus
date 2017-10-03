@@ -158,10 +158,10 @@ The following was added to the default Hackathon Starter project:
 Client-side CSS and JS
 ----------------------
 This fork of Hackathon Starter handles client-side asset compilation in a very different manner. In Hackathon Starter, all assets were placed under the `public` directory. In Hackathon Starter+, you'll find all of the assets
-under `assets`, eg. `assets/styles` and `assets/scripts`. You will need to keep two terminal sessions open, one to handle the asset compilation courtest of Webpack, and one complete, start your server in another terminal `npm start`.
+under `assets`, eg. `assets/styles` and `assets/scripts`. You will need to keep two terminal sessions open, one to handle the asset compilation courtesy of Webpack, and once complete, start your server in another terminal session with `npm start`.
 Use Nodemon to automatically restart your Express server if you wish.
 
-Bootstrap 4 has yet to be officially released, so for now we're sticking with v3, as most developers are somewhat familiar with the framework. Also included is [https://github.com/basscss/basscss-sass](BassCSS), for its awesome utility classes which can seriously speed up your app development. If you'd rather not use BassCSS with Bootstrap, BassCSS can be disabled within `assets/styles/main.scss`.
+Bootstrap 4 has yet to be officially released, so for now we're sticking with v3, as most developers are somewhat familiar with the framework.
 
 Obtaining API Keys
 ------------------
