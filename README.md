@@ -343,30 +343,30 @@ The same goes for other providers.
 Project Structure
 -----------------
 
-| Name                               | Description                                                  |
-| ---------------------------------- | ------------------------------------------------------------ |
-| **config**/passport.js             | Passport Local and OAuth strategies, plus login middleware.  |
-| **controllers**/api.js             | Controller for /api route and all api examples.              |
-| **controllers**/contact.js         | Controller for contact form.                                 |
-| **controllers**/home.js            | Controller for home page (index).                            |
-| **controllers**/user.js            | Controller for user account management.                      |
-| **models**/User.js                 | Mongoose schema and model for User.                          |
-| **public**/                        | Static assets (fonts, css, js, img).                         |
-| **public**/**js**/application.js   | Specify client-side JavaScript dependencies.                 |
-| **public**/**js**/main.js          | Place your client-side JavaScript here.                      |
-| **public**/**css**/main.scss       | Main stylesheet for your app.                                |
-| **public/css/themes**/default.scss | Some Bootstrap overrides to make it look prettier.           |
-| **views/account**/                 | Templates for *login, password reset, signup, profile*.      |
-| **views/api**/                     | Templates for API Examples.                                  |
-| **views/partials**/flash.pug       | Error, info and success flash notifications.                 |
-| **views/partials**/header.pug      | Navbar partial template.                                     |
-| **views/partials**/footer.pug      | Footer partial template.                                     |
-| **views**/layout.pug               | Base template.                                               |
-| **views**/home.pug                 | Home page template.                                          |
-| .env.example                       | Your API keys, tokens, passwords and database URI.           |
-| app.js                             | The main application file.                                   |
-| package.json                       | NPM dependencies.                                            |
-| package-lock.lock                          | Contains exact versions of NPM dependencies in package.json. |
+| Name                                          | Description                                                      |
+| --------------------------------------------- | ---------------------------------------------------------------- |
+| **config**/passport.js                        | Passport Local and OAuth strategies, plus login middleware.      |
+| **controllers**/api.js                        | Controller for /api route and all api examples.                  |
+| **controllers**/contact.js                    | Controller for contact form.                                     |
+| **controllers**/home.js                       | Controller for home page (index).                                |
+| **controllers**/user.js                       | Controller for user account management.                          |
+| **models**/User.js                            | Mongoose schema and model for User.                              |
+| **public**/                                   | Static assets (fonts, css, js, img). Webpack output destination. |
+| **assets**/**scripts**/main.js                | Place your client-side JavaScript here.                          |
+| **assets**/**scripts**/main.js                | Place your client-side modules here.                             |
+| **assets**/**styles**/main.scss               | Main stylesheet for your app.                                    |
+| **assets/styles/themes/default**/default.scss | Some Bootstrap overrides to make it look prettier.               |
+| **views/account**/                            | Templates for *login, password reset, signup, profile*.          |
+| **views/api**/                                | Templates for API Examples.                                      |
+| **views/partials**/flash.pug                  | Error, info and success flash notifications.                     |
+| **views/partials**/header.pug                 | Navbar partial template.                                         |
+| **views/partials**/footer.pug                 | Footer partial template.                                         |
+| **views**/layout.pug                          | Base template.                                                   |
+| **views**/home.pug                            | Home page template.                                              |
+| .env.example                                  | Your API keys, tokens, passwords and database URI.               |
+| app.js                                        | The main application file.                                       |
+| package.json                                  | NPM dependencies.                                                |
+| package-lock.lock                             | Contains exact versions of NPM dependencies in package.json.     |
 
 **Note:** There is no preference how you name or structure your views.
 You could place all your templates in a top-level `views` directory without
@@ -467,7 +467,12 @@ Recommended Node.js Libraries
 Recommended Client-side Libraries
 ---------------------------------
 
-- [Framework7](http://www.idangero.us/framework7/) - Full Featured HTML Framework For Building iOS7 Apps.
+- [Simple-Pjax](https://github.com/Mitranim/simple-pjax) - Zero-configuration PJAX for typical websites (already included).
+- [Socket.io](https://socket.io/) The fastest and most reliable real-time engine.
+- [Bootstrap v3](http://getbootstrap.com/docs/3.3/) The most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.
+- [Slick Slider](http://kenwheeler.github.io/slick/) - Responsive carousel that supports multiple breakpoints, CSS3 transitions, touch events/swiping & much more!
+- [Chart.js](http://www.chartjs.org/) - Simple yet flexible JavaScript charting for designers & developers.
+- [Draggable](https://shopify.github.io/draggable/) - A lightweight, responsive, modern drag & drop library.
 - [InstantClick](http://instantclick.io) - Makes your pages load instantly by pre-loading them on mouse hover.
 - [NProgress.js](https://github.com/rstacruz/nprogress) - Slim progress bars like on YouTube and Medium.
 - [Hover](https://github.com/IanLunn/Hover) - Awesome CSS3 animations on mouse hover.
@@ -476,10 +481,13 @@ Recommended Client-side Libraries
 - [Headroom.js](http://wicky.nillia.ms/headroom.js/) - Hide your header until you need it.
 - [X-editable](http://vitalets.github.io/x-editable/) - Edit form elements inline.
 - [Offline.js](http://github.hubspot.com/offline/docs/welcome/) - Detect when user's internet connection goes offline.
+- [Sweet Alert 2](https://limonte.github.io/sweetalert2/) A beautiful, responsive, customizable, accessible (wai-aria) replacement for javascript's popup boxes.
+- [Bootstrap Notify](http://bootstrap-growl.remabledesigns.com/) Turn standard bootstrap alerts into "growl" like notifications.
 - [Alertify.js](http://fabien-d.github.io/alertify.js/) - Sweet looking alerts and browser dialogs.
 - [selectize.js](http://brianreavis.github.io/selectize.js/) - Styleable select elements and input tags.
 - [drop.js](http://github.hubspot.com/drop/docs/welcome/) -  Powerful Javascript and CSS library for creating dropdowns and other floating displays.
 - [scrollReveal.js](https://github.com/jlmakes/scrollReveal.js) - Declarative on-scroll reveal animations.
+- [Animate.css](https://daneden.github.io/animate.css/) Just-add-water CSS animations.
 
 Pro Tips
 --------
@@ -861,52 +869,10 @@ const socket = io.connect('http://yoursite-namespace.rhcloud.com:8000');
 Wait, why is it on port 8000? Who knows, and if I didn't run across this [blog post](http://velin-georgiev-blog.appspot.com/blog/set-up-nodejs-express-socketio-application-using-websockets-on-openshift-by-red-hat/)
 I wouldn't even know I had to use port 8000.
 
-I am really glad that Heroku and OpenShift at least
-have a websockets support, because many other PaaS providers still do not support it.
-Due to the aforementioned issues with websockets, I cannot include socket.io as part of the Hackathon Starter. *For now...*
-If you need to use socket.io in your app, please continue reading.
+I am really glad that Heroku and OpenShift at least have a websockets support, 
+because many other PaaS providers still do not support it.
 
-First you need to install socket.io:
-```js
-npm install socket.io --save
-```
-
-Replace `const app = express();` with the following code:
-
-```js
-const app = express();
-const server = require('http').Server(app);
-const io = require('socket.io')(server);
-```
-
-I like to have the following code organization in `app.js` (from top to bottom): module dependencies,
-import controllers, import configs, connect to database, express configuration, routes (defined in `config/routes.js`),
-start the server, socket.io stuff. That way I always know where to look for things.
-
-Add the following code at the end of `app.js`:
-
-```js
-io.on('connection', (socket) => {
-  socket.emit('greet', { hello: 'Hey there browser!' });
-  socket.on('respond', (data) => {
-    console.log(data);
-  });
-  socket.on('disconnect', () => {
-    console.log('Socket disconnected');
-  });
-});
-```
-
-One last thing left to change:
-```js
-app.listen(app.get('port'), () => {
-```
-to
-```js
-server.listen(app.get('port'), () => {
-```
-
-At this point we are done with the back-end.
+### Client-side JS and Socket.io
 
 You now have a choice - to include your JavaScript code in Pug templates or have all your client-side
 JavaScript in a separate file - in `main.js`. I will admit, when I first started out with Node.js and JavaScript in general,
@@ -920,37 +886,39 @@ want to [*"get shit done"*](https://www.startupvitamins.com/media/products/13/aa
 Well, either way, use whichever approach makes more sense to you. At the end of the day,
 it's **what** you build that matters, not **how** you build it.
 
+Hackathon Starter+ has Socket.io setup out of the box. Please see `assets/scripts/main.js`.
 If you want to stick all your JavaScript inside templates, then in `layout.pug` -
 your main template file, add this to `head` block.
 
 ```jade
 script(src='/socket.io/socket.io.js')
 script.
-    let socket = io.connect(window.location.href);
-    socket.on('greet', function (data) {
-      console.log(data);
-      socket.emit('respond', { message: 'Hey there, server!' });
-    });
+  let socket = io.connect(window.location.hostname + ':3001')
+  socket.on('greet', (data) => {
+    console.log(data)
+    socket.emit('respond', { message: 'Hey there, server!' })
+  })
 ```
 
 **Note:** Notice the path of the `socket.io.js`, you don't actually
 have to have `socket.io.js` file anywhere in your project; it will be generated
 automatically at runtime.
 
-If you want to have JavaScript code separate from templates, move that inline
-script code into `main.js`, inside the `$(document).ready()` function:
+If you want to have JavaScript code separate from templates, move the code into `main.js` inside the `
+$(document).ready()` function or create a *module* and import it into `main.js`.
+See the default example module called *Greetings* in `greetings.js`:
 
 ```js
 $(document).ready(function() {
 
   // Place JavaScript code here...
-  let socket = io.connect(window.location.href);
-  socket.on('greet', function (data) {
-    console.log(data);
-    socket.emit('respond', { message: 'Hello to you too, Mr.Server!' });
-  });
+  let socket = io.connect(window.location.hostname + ':3001')
+  socket.on('greet', (data) => {
+    console.log(data)
+    socket.emit('respond', { message: 'Hey there, server!' })
+  })
 
-});
+})
 ```
 
 And we are done!
