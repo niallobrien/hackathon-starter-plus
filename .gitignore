@@ -15,6 +15,7 @@ tmp
 
 # Compiled Assets
 public/assets
+public/scripts
 public/*.json
 
 # API keys and secrets
