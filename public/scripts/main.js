@@ -71,7 +71,7 @@ var Greetings = {
   to: function to() {
     var subject = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'creator';
 
-    console.log('Hi ' + subject + ' and welcome to Hackathon Starter Plus! :)');
+    console.log('Hi ' + subject + ' and welcome to Hackathon Starter+ :)');
   }
 };
 
