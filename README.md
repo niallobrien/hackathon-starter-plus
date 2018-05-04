@@ -37,7 +37,6 @@ Table of Contents
     - [Mongoose Cheatsheet](#mongoose-cheatsheet)
 - [Deployment](#deployment)
 - [Docker](#docker)
-- [Changelog](#changelog)
 - [Contributing](#contributing)
 - [License](#license)
 
