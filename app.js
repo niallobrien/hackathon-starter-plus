@@ -73,8 +73,8 @@ app.use((req, res, next) => {
       text = text.replace(/["']/g, '')
 
       const manifest = require(__dirname + '/public/mix-manifest.json')
-      if (options.css) return `<link rel="stylesheet" href="${manifest[text]}">`
-      if (options.js) return `<script type="text/javascript" src="${manifest[text]}"></script>`
+      if (Object.keys(options)[0] === 'css') return `<link rel="stylesheet" href="${manifest[text]}">`
+      if (Object.keys(options)[0] === 'js') return `<script type="text/javascript" src="${manifest[text]}"></script>`
     }
   }
   next()

@@ -1,7 +1,8 @@
 // See webpack.config.js for third-party JS loading instructions.
 
-import 'bootstrap-sass'
+import 'bootstrap'
 import pjax from 'simple-pjax'
+
 import {Greetings} from './modules/greetings'
 
 // Timeout before calling the loading indicator function. Set to 0 to disable.

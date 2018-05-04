@@ -1,13 +1,15 @@
+$fa-font-path: "../../fonts" !default;
 @import "themes/default/variables";
 
 // Vendor
 // -------------------------
 @import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
-$fa-font-path: '~font-awesome/fonts';
-@import "~font-awesome/scss/font-awesome.scss";
-
 @import "themes/default/default.scss";
 @import "lib/bootstrap-social";
+@import '~@fortawesome/fontawesome-free-webfonts/scss/fa-brands';
+@import '~@fortawesome/fontawesome-free-webfonts/scss/fa-regular';
+@import '~@fortawesome/fontawesome-free-webfonts/scss/fa-solid';
+@import '~@fortawesome/fontawesome-free-webfonts/scss/fontawesome';
 
 // Components
 // -------------------------

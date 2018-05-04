@@ -8,8 +8,7 @@ html
     meta(name='csrf-token', content=_csrf)
     title #{title} - Hackathon Starter Plus
     link(rel='shortcut icon', href=fullHostname + '/favicon.png')
-    :mix(css) '/styles/main.css'
-
+    :mix(css) '/assets/styles/app.css'
   body
     include partials/header
 
@@ -19,10 +18,10 @@ html
 
     include partials/footer
 
-    :mix(js) '/scripts/manifest.js'
-    :mix(js) '/scripts/vendor.js'
+    :mix(js) '/assets/scripts/manifest.js'
+    :mix(js) '/assets/scripts/vendor.js'
     script(type='text/javascript', src=hostname + ':3001/socket.io/socket.io.js')
-    :mix(js) '/scripts/main.js'
+    :mix(js) '/assets/scripts/app.js'
 
     // Google Analytics: change UA-XXXXX-X to be your site's ID
     script.
