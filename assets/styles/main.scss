@@ -1,17 +1,16 @@
 @import "themes/default/variables";
 
-/* Vendor
- * ---------------------------------------------------- */
-@import "node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
-
+// Vendor
+// -------------------------
+@import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 $fa-font-path: '~font-awesome/fonts';
-@import "~font-awesome/scss/font-awesome";
+@import "~font-awesome/scss/font-awesome.scss";
 
 @import "themes/default/default.scss";
-@import "lib/bootstrap-social.scss";
+@import "lib/bootstrap-social";
 
-/* Components
- * ---------------------------------------------------- */
+// Components
+// -------------------------
 @import "components/components.scss";
 
 // Scaffolding
@@ -75,5 +74,17 @@ textarea {
 // -------------------------
 
 .fa {
+  margin-right: 6px;
+}
+
+.fab {
+  margin-right: 6px;
+}
+
+.fas {
+  margin-right: 6px;
+}
+
+.far {
   margin-right: 6px;
 }

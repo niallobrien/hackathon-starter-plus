@@ -28,10 +28,10 @@ dotenv.load({path: '.env.example'})
 /**
  * Controllers (route handlers).
  */
-const homeController = require('./controllers/home')
-const userController = require('./controllers/user')
-const apiController = require('./controllers/api')
-const contactController = require('./controllers/contact')
+require('./controllers/home')
+require('./controllers/user')
+require('./controllers/api')
+require('./controllers/contact')
 
 /**
  * API keys and Passport configuration.
@@ -50,10 +50,7 @@ const io = require('socket.io')(socketIoPort)
  * Connect to MongoDB.
  */
 mongoose.Promise = global.Promise
-mongoose.connect(process.env.MONGODB_URI || process.env.MONGOLAB_URI, { useMongoClient: true })
-mongoose.connection.on('connected', () => {
-  console.log('%s MongoDB connection established!', chalk.green('✓'))
-})
+mongoose.connect(process.env.MONGODB_URI)
 mongoose.connection.on('error', (err) => {
   console.error(err)
   console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'))
@@ -68,7 +65,7 @@ app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 1337)
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 
-// Middleware for Jade/Pug custom filter for use with Laravel Mix
+// Middleware for Pug custom filter for use with Laravel Mix
 app.use((req, res, next) => {
   app.locals.filters = {
     'mix': (text, options) => {
@@ -97,10 +94,10 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
   secret: process.env.SESSION_SECRET,
+  cookie: { maxAge: 1209600000 }, // two weeks in milliseconds
   store: new MongoStore({
-    url: process.env.MONGODB_URI || process.env.MONGOLAB_URI,
+    url: process.env.MONGODB_URI,
     autoReconnect: true,
-    clear_interval: 3600
   })
 }))
 
@@ -117,10 +114,10 @@ app.use((req, res, next) => {
 app.use(lusca.xframe('SAMEORIGIN'))
 app.use(lusca.xssProtection(true))
 app.use((req, res, next) => {
-  // provide host to construct url to socketio (port 3001)
+  // provide host to construct url to socket.io (port 3001)
   res.locals.hostname = req.protocol + '://' + req.hostname
   res.locals.fullHostname = req.protocol + '://' + req.hostname + ':' + req.app.settings.port
-  res.locals.user = req.user;
+  res.locals.user = req.user
   next()
 })
 app.use((req, res, next) => {
@@ -130,10 +127,10 @@ app.use((req, res, next) => {
     req.path !== '/signup' &&
     !req.path.match(/^\/auth/) &&
     !req.path.match(/\./)) {
-    req.session.returnTo = req.path
+    req.session.returnTo = req.originalUrl
   } else if (req.user &&
-    req.path === '/account') {
-    req.session.returnTo = req.path
+    (req.path === '/account' || req.path.match(/^\/api/))) {
+    req.session.returnTo = req.originalUrl
   }
   next()
 })

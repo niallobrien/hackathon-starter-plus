@@ -1,6 +1,5 @@
 // See webpack.config.js for third-party JS loading instructions.
 
-
 import 'bootstrap-sass'
 import pjax from 'simple-pjax'
 import {Greetings} from './modules/greetings'
@@ -27,11 +26,13 @@ document.addEventListener('simple-pjax-after-transition', () => {
 })
 
 $(document).ready(function () {
-  // Initialise modules here...
   console.log('jQuery version: ' + jQuery.fn.jquery)
+
+  // init modules here...
   Greetings.to('awesome developer')
 
-  let socket = io.connect(window.location.hostname + ':3001')
+  // init socket.io
+  const socket = io.connect(window.location.hostname + ':3001')
   socket.on('greet', (data) => {
     console.log(data)
     socket.emit('respond', { message: 'Hey there, server!' })

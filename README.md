@@ -2,13 +2,9 @@
 Hackathon Starter+
 =======================
 
-[![Dependency Status](https://david-dm.org/sahat/hackathon-starter/status.svg?style=flat)](https://david-dm.org/sahat/hackathon-starter) [![Build Status](https://travis-ci.org/sahat/hackathon-starter.svg?branch=master)](https://travis-ci.org/sahat/hackathon-starter) [![Join the chat at https://gitter.im/sahat/hackathon-starter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/sahat/hackathon-starter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Thinkful Pair on Node](https://tf-assets-staging.s3.amazonaws.com/badges/thinkful_repo_badge.svg)](http://start.thinkful.com/node/)
+[![Dependency Status](https://david-dm.org/niallobrien/hackathon-starter-plus/status.svg?style=flat)](https://david-dm.org/niallobrien/hackathon-starter-plus) [![Build Status](https://travis-ci.orgniallobrienniallobrien)
 
-**Live Demo**: http://hackathonstarter-sahat.rhcloud.com
-
-Jump to [What's new in 4.3.0?](#changelog)
-
-:bulb: Looking for ES5 code? [Click here](https://github.com/sahat/hackathon-starter/tree/es5).
+Jump to [What's new in 5.0.0?](#changelog)
 
 A boilerplate for **Node.js** web applications.
 
@@ -22,32 +18,6 @@ When I started this project, my primary focus was on **simplicity** and **ease o
 I also tried to make it as **generic** and **reusable** as possible to cover most use cases of hackathon web apps,
 without being too specific. In the worst case you can use this as a learning guide for your projects,
 if for example you are only interested in **Sign in with Google** authentication and nothing else.
-
-### Testimonials
-
-> [**“Nice! That README alone is already gold!”**](https://www.producthunt.com/tech/hackathon-starter#comment-224732)<br>
-> — Adrian Le Bas
-
-> [**“Awesome. Simply awesome.”**](https://www.producthunt.com/tech/hackathon-starter#comment-224966)<br>
-> — Steven Rueter
-
-> [**“I'm using it for a year now and many projects, it's an awesome boilerplate and the project is well maintained!”**](https://www.producthunt.com/tech/hackathon-starter#comment-228610)<br>
-> — Kevin Granger
-
-> **“Small world with Sahat's project. We were using his hackathon starter for our hackathon this past weekend and got some prizes. Really handy repo!”**<br>
-> — Interview candidate for one of the companies I used to work with.
-
-<h4 align="center">Modern Theme</h4>
-
-![](https://lh6.googleusercontent.com/-KQTmCFNK6MM/U7OZpznjDuI/AAAAAAAAERc/h3jR27Uy1lE/w1366-h1006-no/Screenshot+2014-07-02+01.32.22.png)
-
-<h4 align="center">Flatly Bootstrap Theme</h4>
-
-![](https://lh5.googleusercontent.com/-oJ-7bSYisRY/U1a-WhK_LoI/AAAAAAAAECM/a04fVYgefzw/w1474-h1098-no/Screen+Shot+2014-04-22+at+3.08.33+PM.png)
-
-<h4 align="center">API Examples</h4>
-
-![](https://lh5.googleusercontent.com/-BJD2wK8CvC8/VLodBsyL-NI/AAAAAAAAEx0/SafE6o_qq_I/w1818-h1186-no/Screenshot%2B2015-01-17%2B00.25.49.png)
 
 Table of Contents
 -----------------
@@ -104,10 +74,10 @@ Prerequisites
 -------------
 
 - [MongoDB](https://www.mongodb.org/downloads)
-- [Node.js 6.0+](http://nodejs.org)
+- [Node.js 8.0+](http://nodejs.org)
 - Command Line Tools
  - <img src="http://deluge-torrent.org/images/apple-logo.gif" height="17">&nbsp;**Mac OS X:** [Xcode](https://itunes.apple.com/us/app/xcode/id497799835?mt=12) (or **OS X 10.9+**: `xcode-select --install`)
- - <img src="http://dc942d419843af05523b-ff74ae13537a01be6cfec5927837dcfe.r14.cf1.rackcdn.com/wp-content/uploads/windows-8-50x50.jpg" height="17">&nbsp;**Windows:** [Visual Studio](https://www.visualstudio.com/products/visual-studio-community-vs)
+ - <img src="http://dc942d419843af05523b-ff74ae13537a01be6cfec5927837dcfe.r14.cf1.rackcdn.com/wp-content/uploads/windows-8-50x50.jpg" height="17">&nbsp;**Windows:** [Visual Studio](https://www.visualstudio.com/products/visual-studio-community-vs) OR [Visaul Studio Code](https://code.visualstudio.com) + [Windows Subsystem for Linux - Ubuntu](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
  - <img src="https://lh5.googleusercontent.com/-2YS1ceHWyys/AAAAAAAAAAI/AAAAAAAAAAc/0LCb_tsTvmU/s46-c-k/photo.jpg" height="17">&nbsp;**Ubuntu** / <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Logo_Linux_Mint.png" height="17">&nbsp;**Linux Mint:** `sudo apt-get install build-essential`
  - <img src="http://i1-news.softpedia-static.com/images/extra/LINUX/small/slw218news1.png" height="17">&nbsp;**Fedora**: `sudo dnf groupinstall "Development Tools"`
  - <img src="https://en.opensuse.org/images/b/be/Logo-geeko_head.png" height="17">&nbsp;**OpenSUSE:** `sudo zypper install --type pattern devel_basis`
@@ -144,6 +114,17 @@ node app.js
 # Optionalliy, to build your assets for production (styles and scripts)
 npm run production
 ```
+
+**Warning:** If you want to use some api that need https to work (for example pinterest or facebook),
+you will need to download [ngrok](https://ngrok.com/).
+You must start ngrok after starting the project.
+
+```bash
+# start ngrok to intercept the data exchanged on port 1337
+./ngrok http 1337
+```
+
+Next, you must use the https url defined by ngrok, for example `https://hackaton.ngrok.io`
 
 **Note:** I highly recommend installing [Nodemon](https://github.com/remy/nodemon).
 It watches for any changes in your  node.js app and automatically restarts the
@@ -188,8 +169,8 @@ them with *your credentials* when you are ready to deploy an app.
 - Fill out the required fields then click on **Save**
 - In the *Create Client ID* modal dialog:
  - **Application Type**: Web Application
- - **Authorized Javascript origins**: http://localhost:3000
- - **Authorized redirect URI**: http://localhost:3000/auth/google/callback
+ - **Authorized Javascript origins**: http://localhost:1337
+ - **Authorized redirect URI**: http://localhost:1337/auth/google/callback
 - Click on **Create Client ID** button
 - Copy and paste *Client ID* and *Client secret* keys into `.env`
 
@@ -205,16 +186,18 @@ The same goes for other providers.
 
 - Visit <a href="https://developers.facebook.com/" target="_blank">Facebook Developers</a>
 - Click **My Apps**, then select **Add a New App* from the dropdown menu
-- Select **Website** platform and enter a new name for your app
-- Click on the **Create New Facebook App ID** button
-- Choose a **Category** that best describes your app
-- Click on **Create App ID** button
-- In the upper right corner click on **Skip Quick Start**
+- Enter a new name for your app
+- Click on the **Create App ID** button
+- Find the Facebook Login Product and click on **Facebook Login**
+- Instead of going through their Quickstart, click on **Settings** for your app in the top left corner 
 - Copy and paste *App ID* and *App Secret* keys into `.env`
- - **Note:** *App ID* is **clientID**, *App Secret* is **clientSecret**
-- Click on the *Settings* tab in the left nav, then click on **+ Add Platform**
-- Select **Website**
-- Enter `http://localhost:3000` under *Site URL*
+- **Note:** *App ID* is **FACEBOOK_ID**, *App Secret* is **FACEBOOK_SECRET** in `.env`
+- Enter `localhost` under *App Domains*
+- Choose a **Category** that best describes your app
+- Click on **+ Add Platform** and select **Website**
+- Enter `http://localhost:1337` under *Site URL*
+- Click on the *Settings* tab in the left nav under Facebook Login
+- Enter `http://localhost:1337/auth/facebook/callback` under Valid OAuth redirect URIs
 
 **Note:** After a successful sign in with Facebook, a user will be redirected back to home page with appended hash `#_=_` in the URL. It is *not* a bug. See this [Stack Overflow](https://stackoverflow.com/questions/7131909/facebook-callback-appends-to-return-url) discussion for ways to handle it.
 
@@ -223,10 +206,10 @@ The same goes for other providers.
 <img src="https://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Logo.png" width="200">
 
 - Go to <a href="https://github.com/settings/profile" target="_blank">Account Settings</a>
-- Select **Applications** from the sidebar
-- Then inside **Developer applications** click on **Register new application**
+- Select **Developer settings** from the sidebar
+- Then inside click on **Register new application**
 - Enter *Application Name* and *Homepage URL*
-- For *Authorization Callback URL*: http://localhost:3000/auth/github/callback
+- For *Authorization Callback URL*: http://localhost:1337/auth/github/callback
 - Click **Register application**
 - Now copy and paste *Client ID* and *Client Secret* keys into `.env` file
 
@@ -237,7 +220,7 @@ The same goes for other providers.
 - Sign in at <a href="https://apps.twitter.com/" target="_blank">https://apps.twitter.com</a>
 - Click **Create a new application**
 - Enter your application name, website and description
-- For **Callback URL**: http://127.0.0.1:3000/auth/twitter/callback
+- For **Callback URL**: http://127.0.0.1:1337/auth/twitter/callback
 - Go to **Settings** tab
 - Under *Application Type* select **Read and Write** access
 - Check the box **Allow this application to be used to Sign in with Twitter**
@@ -253,8 +236,8 @@ The same goes for other providers.
  - *It may ask you to sign in once again*
 - Click **+ Add New Application** button
 - Fill out all the *required* fields
- - **OAuth 2.0 Redirect URLs**: http://localhost:3000/auth/linkedin/callback
- - **JavaScript API Domains**: http://localhost:3000
+ - **OAuth 2.0 Redirect URLs**: http://localhost:1337/auth/linkedin/callback
+ - **JavaScript API Domains**: http://localhost:1337
 - For **Default Application Permissions** make sure at least the following is checked:
  - `r_basicprofile`
 - Finish by clicking **Add Application** button
@@ -291,7 +274,7 @@ The same goes for other providers.
 - Click on **My Apps** in the top menu
 - Click the **Create A New App** button
 - Enter *App Name*, *Welcome page url*,
-- For **Redirect URI**: http://localhost:3000/auth/foursquare/callback
+- For **Redirect URI**: http://localhost:1337/auth/foursquare/callback
 - Click **Save Changes**
 - Copy and paste *Client ID* and *Client Secret* keys into `.env` file
 
@@ -302,13 +285,13 @@ The same goes for other providers.
 - Go to <a href="http://www.tumblr.com/oauth/apps" target="_blank">http://www.tumblr.com/oauth/apps</a>
 - Once signed in, click **+Register application**
 - Fill in all the details
-- For **Default Callback URL**: `http://localhost:3000/auth/tumblr/callback`
+- For **Default Callback URL**: `http://localhost:1337/auth/tumblr/callback`
 - Click **✔Register**
 - Copy and paste *OAuth consumer key* and *OAuth consumer secret* keys into `.env` file
 
 <hr>
 
-<img src="http://www.technologytell.com/gaming/files/2012/01/steam_logo.jpg" width="200">
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Steam_logo.svg" width="200">
 
 - Go to <a href="http://steamcommunity.com/dev/apikey" target="_blank">http://steamcommunity.com/dev/apikey</a>
 - Sign in with your existing Steam account
@@ -363,10 +346,16 @@ Project Structure
 | **views/partials**/footer.pug                 | Footer partial template.                                         |
 | **views**/layout.pug                          | Base template.                                                   |
 | **views**/home.pug                            | Home page template.                                              |
+| .dockerignore                                 | Folder and files ignored by docker usage.                        |
 | .env.example                                  | Your API keys, tokens, passwords and database URI.               |
+| .eslintrc                                     | Rules for eslint linter.                                         |
+| .gitignore                                    | Folder and files ignored by git.                                 |
+| .travis.yml                                   | Configuration files for continue integration.                    |
 | app.js                                        | The main application file.                                       |
+| docker-compose.yml                            | Docker compose configuration file.                               |
+| Dockerfile                                    | Docker configuration file.                                       |
 | package.json                                  | NPM dependencies.                                                |
-| package-lock.lock                             | Contains exact versions of NPM dependencies in package.json.     |
+| package-lock.json                             | Contains exact versions of NPM dependencies in package.json.     |
 
 **Note:** There is no preference how you name or structure your views.
 You could place all your templates in a top-level `views` directory without
@@ -377,63 +366,70 @@ Just don't forget to update `extends ../layout`  and corresponding
 List of Packages
 ----------------
 
-| Package                         | Description                                                           |
-| ------------------------------- | --------------------------------------------------------------------- |
-| async                           | Utility library that provides asynchronous control flow.              |
-| bcrypt-nodejs                   | Library for hashing and salting user passwords.                       |
-| cheerio                         | Scrape web pages using jQuery-style syntax.                           |
-| clockwork                       | Clockwork SMS API library.                                            |
-| connect-mongo                   | MongoDB session store for Express.                                    |
-| dotenv                          | Loads environment variables from .env file.                           |
-| express                         | Node.js web framework.                                                |
-| body-parser                     | Express 4 middleware.                                                 |
-| express-session                 | Express 4 middleware.                                                 |
-| morgan                          | Express 4 middleware.                                                 |
-| compression                     | Express 4 middleware.                                                 |
-| errorhandler                    | Express 4 middleware.                                                 |
-| serve-favicon                   | Express 4 middleware offering favicon serving and caching.            |
-| express-flash                   | Provides flash messages for Express.                                  |
-| express-status-monitor          | Reports real-time server metrics for Express.                         |
-| express-validator               | Easy form validation for Express.                                     |
-| fbgraph                         | Facebook Graph API library.                                           |
-| github                          | GitHub API library.                                                   |
-| pug (jade)                      | Template engine for Express.                                          |
-| lastfm                          | Last.fm API library.                                                  |
-| instagram-node                  | Instagram API library.                                                |
-| lob                             | Lob API library                                                       |
-| lusca                           | CSRF middleware.                                                      |
-| mongoose                        | MongoDB ODM.                                                          |
-| node-foursquare                 | Foursquare API library.                                               |
-| node-linkedin                   | LinkedIn API library.                                                 |
-| node-sass-middleware            | Sass middleware compiler.                                                 |
-| nodemailer                      | Node.js library for sending emails.                                   |
-| passport                        | Simple and elegant authentication library for node.js                 |
-| passport-facebook               | Sign-in with Facebook plugin.                                         |
-| passport-github                 | Sign-in with GitHub plugin.                                           |
-| passport-google-oauth           | Sign-in with Google plugin.                                           |
-| passport-twitter                | Sign-in with Twitter plugin.                                          |
-| passport-instagram              | Sign-in with Instagram plugin.                                        |
-| passport-local                  | Sign-in with Username and Password plugin.                            |
-| passport-linkedin-oauth2        | Sign-in with LinkedIn plugin.                                         |
-| passport-oauth                  | Allows you to set up your own OAuth 1.0a and OAuth 2.0 strategies.    |
-| paypal-rest-sdk                 | PayPal APIs library.                                                  |
-| request                         | Simplified HTTP request library.                                      |
-| stripe                          | Offical Stripe API library.                                           |
-| tumblr.js                       | Tumblr API library.                                                   |
-| twilio                          | Twilio API library.                                                   |
-| twit                            | Twitter API library.                                                  |
-| lodash                          | Handy JavaScript utlities library.                                    |
-| validator                       | Used in conjunction with express-validator in **controllers/api.js**. |
-| mocha                           | Test framework.                                                       |
-| chai                            | BDD/TDD assertion library.                                            |
-| supertest                       | HTTP assertion library.                                               |
+| Package                         | Description                                                             |
+| ------------------------------- | ------------------------------------------------------------------------|
+| @octokit/rest                   | GitHub API library.                                                     |
+| bcrypt-nodejs                   | Library for hashing and salting user passwords.                         |
+| body-parser                     | Node.js body parsing middleware.                                        |
+| chai                            | BDD/TDD assertion library.                                              |
+| chalk                           | Terminal string styling done right.                                     |
+| cheerio                         | Scrape web pages using jQuery-style syntax.                             |
+| clockwork                       | Clockwork SMS API library.                                              |
+| compression                     | Node.js compression middleware.                                         |
+| connect-mongo                   | MongoDB session store for Express.                                      |
+| dotenv                          | Loads environment variables from .env file.                             |
+| errorhandler                    | Development-only error handler middleware.                              |
+| eslint                          | Linter JavaScript.                                                      |
+| eslint-config-airbnb-base       | Configuration eslint by airbnb.                                         |
+| eslint-plugin-chai-friendly     | Makes eslint friendly towards Chai.js 'expect' and 'should' statements. |
+| eslint-plugin-import            | ESLint plugin with rules that help validate proper imports.             |
+| express                         | Node.js web framework.                                                  |
+| express-flash                   | Provides flash messages for Express.                                    |
+| express-session                 | Simple session middleware for Express.                                  |
+| express-status-monitor          | Reports real-time server metrics for Express.                           |
+| express-validator               | Easy form validation for Express.                                       |
+| fbgraph                         | Facebook Graph API library.                                             |
+| instagram-node                  | Instagram API library.                                                  |
+| lastfm                          | Last.fm API library.                                                    |
+| lob                             | Lob API library.                                                        |
+| lusca                           | CSRF middleware.                                                        |
+| mocha                           | Test framework.                                                         |
+| mongoose                        | MongoDB ODM.                                                            |
+| morgan                          | HTTP request logger middleware for node.js.                             |
+| multer                          | Node.js middleware for handling `multipart/form-data`.                  |
+| node-foursquare                 | Foursquare API library.                                                 |
+| node-linkedin                   | LinkedIn API library.                                                   |
+| node-sass                       | Node.js bindings to libsass.                                            |
+| node-sass-middleware            | Sass middleware compiler.                                               |
+| nyc                             | Coverage test.                                                          |
+| nodemailer                      | Node.js library for sending emails.                                     |
+| passport                        | Simple and elegant authentication library for node.js.                  |
+| passport-facebook               | Sign-in with Facebook plugin.                                           |
+| passport-github                 | Sign-in with GitHub plugin.                                             |
+| passport-google-oauth           | Sign-in with Google plugin.                                             |
+| passport-instagram              | Sign-in with Instagram plugin.                                          |
+| passport-linkedin-oauth2        | Sign-in with LinkedIn plugin.                                           |
+| passport-local                  | Sign-in with Username and Password plugin.                              |
+| passport-openid                 | Sign-in with OpenId plugin.                                             |
+| passport-oauth                  | Allows you to set up your own OAuth 1.0a and OAuth 2.0 strategies.      |
+| passport-twitter                | Sign-in with Twitter plugin.                                            |
+| paypal-rest-sdk                 | PayPal APIs library.                                                    |
+| pug (jade)                      | Template engine for Express.                                            |
+| request                         | Simplified HTTP request library.                                        |
+| sinon                           | Test spies, stubs and mocks for JavaScript.                             |
+| sinon-mongoose                  | Extend Sinon stubs for Mongoose methods to test chained methods easily. |
+| stripe                          | Offical Stripe API library.                                             |
+| supertest                       | HTTP assertion library.                                                 |
+| tumblr.js                       | Tumblr API library.                                                     |
+| twilio                          | Twilio API library.                                                     |
+| twit                            | Twitter API library.                                                    |
+| validator                       | Used in conjunction with express-validator in **controllers/api.js**.   |
 
 Useful Tools and Resources
 --------------------------
 - [JavaScripting](http://www.javascripting.com/) - The Database of JavaScript Libraries
 - [JS Recipes](http://sahatyalkabov.com/jsrecipes/) - JavaScript tutorials for backend and frontend development.
-- [Jade Syntax Documentation by Example](http://naltatis.github.io/jade-syntax-docs/#attributes) - Even better than official Jade docs.
-- [HTML to Jade converter](http://html2jade.aaron-powell.com) - Extremely valuable when you need to quickly copy and paste HTML snippets from the web.
+- [HTML to Pug converter](https://html-to-pug.com/) - HTML to PUG is a free online converter helping you to convert html files to pug syntax in realtime.
 - [JavascriptOO](http://www.javascriptoo.com/) - A directory of JavaScript libraries with examples, CDN links, statistics, and videos.
 - [Favicon Generator](http://realfavicongenerator.net/) - Generate favicons for PC, Android, iOS, Windows 8.
 
@@ -444,14 +440,13 @@ Recommended Design Resources
 - [UIBox](http://www.uibox.in) - Curated HTML, CSS, JS, UI components.
 - [Bootstrap Zero](https://www.bootstrapzero.com) - Free Bootstrap templates themes.
 - [Google Bootstrap](http://todc.github.io/todc-bootstrap/) - Google-styled theme for Bootstrap.
-- [Font Awesome Icons](http://fortawesome.github.io/Font-Awesome/icons/) - It's already part of the Hackathon Starter, so use this page as a reference.
+- [Featherr Icons](https://feathericons.com/) - It's already part of Hackathon Starter+, so use this page as a reference.
 - [Colors](http://clrs.cc) - A nicer color palette for the web.
 - [Creative Button Styles](http://tympanus.net/Development/CreativeButtons/) - awesome button styles.
 - [Creative Link Effects](http://tympanus.net/Development/CreativeLinkEffects/) - Beautiful link effects in CSS.
 - [Medium Scroll Effect](http://codepen.io/andreasstorm/pen/pyjEh) - Fade in/out header background image as you scroll.
 - [GeoPattern](https://github.com/btmills/geopattern) - SVG background pattern generator.
 - [Trianglify](https://github.com/qrohlf/trianglify) - SVG low-poly background pattern generator.
-
 
 Recommended Node.js Libraries
 -----------------------------
@@ -542,12 +537,12 @@ download MongoDB [here](http://mongodb.org/downloads), or install it via a packa
 Windows users, read [Install MongoDB on Windows](https://docs.mongodb.org/manual/tutorial/install-mongodb-on-windows/).
 
 **Tip:** If you are always connected to the internet, you could just use
-[mLab](https://mongolab.com/) or [Compose](https://www.compose.io/) instead
+[mLab](https://mlab.com/) or [Compose](https://www.compose.io/) instead
 of downloading and installing MongoDB locally. You will only need to update database credentials
 in `.env` file.
 
 ### I get an error when I deploy my app, why?
-Chances are you haven't changed the *Database URI* in `.env`. If `MONGODB`/`MONGOLAB_URI` is
+Chances are you haven't changed the *Database URI* in `.env`. If `MONGODB` is
 set to `localhost`, it will only work on your machine as long as MongoDB is
 running. When you deploy to Heroku, OpenShift or some other provider, you will not have MongoDB
 running on `localhost`. You need to create an account with [mLab](https://mongolab.com/)
@@ -575,57 +570,6 @@ how a particular functionality works. Maybe you are just curious about
 how it works, or maybe you are lost and confused while reading the code,
 I hope it provides some guidance to you.
 
-### Custom HTML and CSS Design 101
-
-[HTML5 UP](http://html5up.net/) has many beautiful templates that you can download for free.
-
-When you download the ZIP file, it will come with *index.html*, *images*, *css* and *js* folders. So, how do you
-integrate it with Hackathon Starter? Hackathon Starter uses Bootstrap CSS framework, but these templates do not.
-Trying to use both CSS files at the same time will likely result in undesired effects.
-
-**Note:** Using the custom templates approach, you should understand that you cannot reuse any of the views I have created: layout, home page, api browser, login, signup, account management, contact. Those views were built using Bootstrap grid and styles. You will have to manually update the grid using a different syntax provided in the template. **Having said that, you can mix and match if you want to do so: Use Bootstrap for main app interface, and a custom template for a landing page.**
-
-Let's start from the beginning. For this example I will use [Escape Velocity](http://html5up.net/escape-velocity/) template:
-![Alt](http://html5up.net/uploads/images/escape-velocity.jpg)
-
-**Note:** For the sake of simplicity I will only consider `index.html`, and skip `left-sidebar.html`,
-`no-sidebar.html`, `right-sidebar.html`.
-
-Move all JavaScript files from `html5up-escape-velocity/js` to `public/js`. Then move all CSS files from `html5up-escape-velocity/css` to `public/css`. And finally, move all images from `html5up-escape-velocity/images` to `public/images`. You could move it to the existing **img** folder, but that would require manually changing every `img` reference. Grab the contents of `index.html` and paste it into [HTML To Jade](http://html2jade.aaron-powell.com/).
-
-**Note:** Do not forget to update all the CSS and JS paths accordingly.
-
-Create a new file `escape-velocity.pug` and paste the Pug markup in `views` folder.
-Whenever you see the code `res.render('account/login')` - that means it will search for `views/account/login.pug` file.
-
-Let's see how it looks. Create a new controller **escapeVelocity** inside `controllers/home.js`:
-
-```js
-exports.escapeVelocity = (req, res) => {
-  res.render('escape-velocity', {
-    title: 'Landing Page'
-  });
-};
-```
-
-And then create a route in `app.js`. I placed it right after the index controller:
-```js
-app.get('/escape-velocity', homeController.escapeVelocity);
-```
-
-Restart the server (if you are not using **nodemon**), then you should see the new template at [http://localhost:3000/escape-velocity](http://localhost:3000/escape-velocity).
-
-I will stop right here, but if you would like to use this template as more than just a single page, take a look at how these Jade templates work: `layout.pug` - base template, `index.pug` - home page, `partials/header.pug` - Bootstrap navbar, `partials/footer.pug` - sticky footer. You will have to manually break it apart into smaller pieces. Figure out which part of the template you want to keep the same on all pages - that's your new `layout.pug`.
-Then, each page that changes, be it `index.pug`, `about.pug`, `contact.pug`
-will be embedded in your new `layout.pug` via `block content`. Use existing templates as a reference.
-
-This is a rather lengthy process, and templates you get from elsewhere,
-might have yet another grid system. That's why I chose *Bootstrap* for the Hackathon Starter.
- Many people are already familiar with *Bootstrap*, plus it's easy to get started with it if you have never used *Bootstrap*.
- You can also buy many beautifully designed *Bootstrap* themes at [Themeforest](http://themeforest.net/), and use them as a drop-in replacement for Hackathon Starter. However, if you would like to go with a completely custom HTML/CSS design, this should help you to get started!
-
-<hr>
-
 ### How do flash messages work in this project?
 Flash messages allow you to display a message at the end of the request and access
 it on next request and only next request. For instance, on a failed login attempt, you would
@@ -640,7 +584,7 @@ thanks to *express-flash*.
 
 Flash messages have a two-step process. You use `req.flash('errors', { msg: 'Error messages goes here' }`
 to create a flash message in your controllers, and then display them in your views:
-```jade
+```pug
 if messages.errors
   .alert.alert-danger.fade.in
     for error in messages.errors
@@ -675,7 +619,7 @@ req.flash('warning', { msg: 'You have exceeded 90% of your data usage' });
 ```
 
 **User Account Page (Example)**
-```jade
+```pug
 if messages.warning
   .alert.alert-warning.fade.in
     for warning in messages.warning
@@ -688,7 +632,7 @@ messages were scattered throughout each view that used flash messages
 (contact, login, signup, profile), but now, thankfully it is uses a *DRY* approach.
 
 The flash messages partial template is *included* in the `layout.pug`, along with footer and navigation.
-```jade
+```pug
 body
     include partials/header
 
@@ -809,7 +753,7 @@ const bookController = require('./controllers/book');
 ```
 
 **Step 5.** Create `books.pug` template.
-```jade
+```pug
 extends layout
 
 block content
@@ -890,7 +834,7 @@ Hackathon Starter+ has Socket.io setup out of the box. Please see `assets/script
 If you want to stick all your JavaScript inside templates, then in `layout.pug` -
 your main template file, add this to `head` block.
 
-```jade
+```pug
 script(src='/socket.io/socket.io.js')
 script.
   let socket = io.connect(window.location.hostname + ':3001')
@@ -957,25 +901,25 @@ console.log(`My cat is named ${name} and is ${age} years old.`);
 To import functions, objects or primitives exported from an external module. These are the most common types of importing.
 
 ```js
-import name from 'module-name';
+const name = require('module-name')
 ```
+
 ```js
-import * as name from 'module-name';
-```
-```js
-import { foo, bar } from 'module-name';
+const { foo, bar } = require('module-name')
 ```
 
 To export functions, objects or primitives from a given file or module.
 
 ```js
-export { myFunction };
+module.exports = { myFunction };
 ```
+
 ```js
-export const name = 'yourName';
+module.exports.name = 'yourName';
 ```
+
 ```js
-export default myFunctionOrClass
+module.exports = myFunctionOrClass;
 ```
 
 #### Spread Operator
@@ -1053,60 +997,6 @@ class Person {
 
 :gift: **Credits**: [DuckDuckGo](https://duckduckgo.com/?q=es6+cheatsheet&ia=cheatsheet&iax=1) and [@DrkSephy](https://github.com/DrkSephy/es6-cheatsheet).
 
-Modern JS Cheatsheet:
-https://github.com/mbeaudru/modern-js-cheatsheet
-
-ES6 Cheatsheet:
-https://github.com/DrkSephy/es6-cheatsheet
-
-ES6 Tutorial:
-https://codeburst.io/es6-tutorial-for-beginners-5f3c4e7960be
-
-:top: <sub>[**back to top**](#table-of-contents)</sub>
-
-### Pug Cheatsheet
-https://codepen.io/mimoduo/post/pug-js-cheat-sheet
-
-### Mongoose Cheatsheet
-
-#### Find all users:
-```js
-User.find((err, users) => {
-  console.log(users);
-});
-```
-
-#### Find a user by email:
-```js
-let userEmail = 'example@gmail.com';
-User.findOne({ email: userEmail }, (err, user) => {
-  console.log(user);
-});
-```
-
-#### Find 5 most recent user accounts:
-```js
-User
-  .find()
-  .sort({ _id: -1 })
-  .limit(5)
-  .exec((err, users) => {
-    console.log(users);
-  });
-```
-
-#### Get total count of a field from all documents:
-Let's suppose that each user has a `votes` field and you would like to count
-the total number of votes in your database across all users. One very
-inefficient way would be to loop through each document and manually accumulate
-the count. Or you could use [MongoDB Aggregation Framework](https://docs.mongodb.org/manual/core/aggregation-introduction/) instead:
-
-```js
-User.aggregate({ $group: { _id: null, total: { $sum: '$votes' } } }, (err, votesCount)  => {
-  console.log(votesCount.total);
-});
-```
-
 :top: <sub>[**back to top**](#table-of-contents)</sub>
 
 ### <img src="http://i.stack.imgur.com/Mmww2.png" height="34" align="top"> JavaScript Date Cheatsheet
@@ -1174,6 +1064,47 @@ var yesterday = date.setDate(date.getDate() - 1);
 
 :top: <sub>[**back to top**](#table-of-contents)</sub>
 
+### Mongoose Cheatsheet
+
+#### Find all users:
+```js
+User.find((err, users) => {
+  console.log(users);
+});
+```
+
+#### Find a user by email:
+```js
+let userEmail = 'example@gmail.com';
+User.findOne({ email: userEmail }, (err, user) => {
+  console.log(user);
+});
+```
+
+#### Find 5 most recent user accounts:
+```js
+User
+  .find()
+  .sort({ _id: -1 })
+  .limit(5)
+  .exec((err, users) => {
+    console.log(users);
+  });
+```
+
+#### Get total count of a field from all documents:
+Let's suppose that each user has a `votes` field and you would like to count
+the total number of votes in your database across all users. One very
+inefficient way would be to loop through each document and manually accumulate
+the count. Or you could use [MongoDB Aggregation Framework](https://docs.mongodb.org/manual/core/aggregation-introduction/) instead:
+
+```js
+User.aggregate({ $group: { _id: null, total: { $sum: '$votes' } } }, (err, votesCount)  => {
+  console.log(votesCount.total);
+});
+```
+:top: <sub>[**back to top**](#table-of-contents)</sub>
+
 Docker
 ----------
 
@@ -1194,7 +1125,7 @@ docker-compose up web
 
 ```
 
-To view the app, find your docker ip address + port 3000 ( this will typically be http://192.168.99.100:3000/ ).
+To view the app, find your docker ip address + port 1337 ( this will typically be http://localhost:1337/ ).  To use a port other than 1337, you would need to modify the port in app.js, Dockerfile and docker-compose.yml.
 
 
 Deployment
@@ -1211,19 +1142,19 @@ listed below.
 
 ### 1-Step Deployment with Heroku
 
-<img src="http://blog.exadel.com/wp-content/uploads/2013/10/heroku-Logo-1.jpg" width="200">
+<img src="https://upload.wikimedia.org/wikipedia/en/a/a9/Heroku_logo.png" width="200">
 
 - Download and install [Heroku Toolbelt](https://toolbelt.heroku.com/)
 - In terminal, run `heroku login` and enter your Heroku credentials
 - From *your app* directory run `heroku create`
-- Run `heroku addons:create mongolab`.  This will set up the mLab add-on and configure the `MONGOLAB_URI` environment variable in your Heroku app for you.
+- Run `heroku addons:create mongolab`.  This will set up the mLab add-on and configure the `MONGODB_URI` environment variable in your Heroku app for you.
 - Lastly, do `git push heroku master`.  Done!
 
 **Note:** To install Heroku add-ons your account must be verified.
 
 ---
 
-<img src="http://i.imgur.com/7KnCa5a.png" width="200">
+<img src="https://mlab.com/company/img/branding/mLab-logo-onlight.svg" width="200">
 
 - Open [mlab.com](https://mlab.com) website
 - Click the yellow **Sign up** button
@@ -1245,6 +1176,7 @@ listed below.
 **Note:** As an alternative to mLab, there is also [Compose](https://www.compose.io/).
 
 <img src="http://www.opencloudconf.com/images/openshift_logo.png" width="200">
+**NOTE** *These instructions might be out of date due to changes in OpenShift. Heroku is currently a good free alternative.  If you the new process, please feel free to help us update this page*
 
 - First, install this Ruby gem: `sudo gem install rhc` :gem:
 - Run `rhc login` and enter your OpenShift credentials
@@ -1258,7 +1190,7 @@ listed below.
 Add these two lines to `app.js`, just place them anywhere before `app.listen()`:
 ```js
 var IP_ADDRESS = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
-var PORT = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+var PORT = process.env.OPENSHIFT_NODEJS_PORT || 1337;
 ```
 
 Then change `app.listen()` to:
@@ -1281,7 +1213,7 @@ Add this to `package.json`, after *name* and *version*. This is necessary becaus
 - And you are done!
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Windows_Azure_logo.png" width="200">
-
+**NOTE** *Beyound the initial 12 month trial of Azure, the platform does not seem to offer a free tier for hosting NodeJS apps.  If you are looking for a free tier service to host your app, Heroku might be a better choice at this point*
 - Login to [Windows Azure Management Portal](https://manage.windowsazure.com/)
 - Click the **+ NEW** button on the bottom left of the portal
 - Click **COMPUTE**, then **WEB APP**, then **QUICK CREATE**
@@ -1301,6 +1233,7 @@ Add this to `package.json`, after *name* and *version*. This is necessary becaus
 
 
 # IBM Bluemix Cloud Platform
+**NOTE** *At this point it appears that Bluemix's free tier to host NodeJS apps is limited to 30 days.  If you are looking for a free tier service to host your app, Heroku might be a better choice at this point*
 
 1. Create a Bluemix Account
 
@@ -1361,39 +1294,27 @@ Be sure to check out the full list of Watson services to forwarder enhance your 
 
 
 
-### Watson catalog of services     
+### Watson catalog of services      
 
-**<img src="https://kpprod1.alchemyapi.com/images/alchemy_logo_24.png" width="25"> AlchemyAPI** - An AlchemyAPI service that analyzes your unstructured text and image content.      
+**<img src="https://wbi.mybluemix.net/icons/conversation.svg?version=2" width="25"> [Conversation](https://www.ibm.com/watson/services/conversation/)** - 	Quickly build and deploy chatbots and virtual agents across a variety of channels, including mobile devices, messaging platforms, and even robots.  
 
-**<img src="http://csbmixbroker.mybluemix.net/commerce_24.png" width="25"> Cognitive Commerce** - Cognitive Commerce is a service provided by Cognitive Scale.  
+**<img src="https://wbi.mybluemix.net/icons/discovery.svg" width="25"> [Discovery](https://www.ibm.com/watson/services/discovery/)** - Unlock hidden value in data to find answers, monitor trends and surface patterns with the world’s most advanced cloud-native insight engine.
 
-**<img src="http://csbmixbroker.mybluemix.net/graph_24.png" width="25"> Cognitive Graph** - Cognitive Graph is a service provided by Cognitive Scale.  
+**<img src="https://wbi.mybluemix.net/icons/language-translator.svg?version=4" width="20" width="25"> [Language Translator](https://www.ibm.com/watson/services/language-translator/)** - Translate text from one language to another.
 
-**<img src="http://csbmixbroker.mybluemix.net/insights_24.png" width="25"> Cognitive Insights** - Cognitive Insights™ is a service provided by Cognitive Scale.  
+**<img src="https://wbi.mybluemix.net/icons/natural-language-classifier.svg?version=2" width="25"> [Natural Language Classifier](https://www.ibm.com/watson/services/natural-language-classifier/)** - Interpret and classify natural language with confidence.  
 
-**<img src="https://wbi.mybluemix.net/icons/conversation.svg?version=2" width="25"> Conversation** - 	Add a natural language interface to your application to automate interactions with your end users. Common applications include virtual agents and chat bots that can integrate and communicate on any channel or device.  
+**<img src="https://wbi.mybluemix.net/icons/natural-language-understanding.svg?version=2" width="25"> [Natural Language Understanding](https://www.ibm.com/watson/services/natural-language-understanding/)** - Analyze text to extract meta-data from content such as concepts, entities, keywords and more.
 
-**<img src="https://wbi.mybluemix.net/icons/discovery.svg" width="25"> Discovery** - Add a cognitive search and content analytics engine to applications.  
+**<img src="https://wbi.mybluemix.net/icons/personality-insights.svg?version=2" width="25"> [Personality Insights](https://www.ibm.com/watson/services/personality-insights/)** - Predict personality characteristics, needs and values through written text.
 
-**<img src="https://wbi.mybluemix.net/icons/document-conversion.svg?version=2" width="25"> Document Conversion** - Converts a HTML, PDF, or Microsoft Word™ document into a normalized HTML, plain text, or a set of JSON-formatted Answer units.  
+**<img src="https://wbi.mybluemix.net/icons/speech-to-text.svg?version=2" width="25"> [Speech to Text](https://www.ibm.com/watson/services/speech-to-text/)** - Convert audio and voice into written text for quick understanding of content.
 
-**<img src="https://wbi.mybluemix.net/icons/language-translator.svg?version=4" width="20" width="25"> Language Translator** - Translate text from one language to another for specific domains.
+**<img src="https://wbi.mybluemix.net/icons/text-to-speech.svg?version=2" width="25"> [Text to Speech](https://www.ibm.com/watson/services/text-to-speech/)** - Convert written text into natural sounding audio in a variety of languages and voices.  
 
-**<img src="https://wbi.mybluemix.net/icons/natural-language-classifier.svg?version=2" width="25"> Natural Language Classifier** - Natural Language Classifier performs natural language classification on question texts. A user would be able to train their data and the predict the appropriate class for a input question.  
+**<img src="https://wbi.mybluemix.net/icons/tone-analyzer.svg?version=2" width="25"> [Tone Analyzer](https://www.ibm.com/watson/services/tone-analyzer/)** - Understand emotions, social tendencies and perceived writing style. 
 
-**<img src="https://wbi.mybluemix.net/icons/personality-insights.svg?version=2" width="25"> Personality Insights** - The Watson Personality Insights derives insights from transactional and social media data to identify psychological traits.  
-
-**<img src="https://wbi.mybluemix.net/icons/retrieve-and-rank.svg?version=2" width="25"> Retrieve and Rank** - Add machine learning enhanced search capabilities to your application.   
-
-**<img src="https://wbi.mybluemix.net/icons/speech-to-text.svg?version=2" width="25"> Speech to Text** - Low-latency, streaming transcription.  
-
-**<img src="https://wbi.mybluemix.net/icons/text-to-speech.svg?version=2" width="25"> Text to Speech** - Synthesizes natural-sounding speech from text.  
-
-**<img src="https://wbi.mybluemix.net/icons/tone-analyzer.svg?version=2" width="25"> Tone Analyzer** - Tone Analyzer uses linguistic analysis to detect three types of tones from communications: emotion, social, and language. This insight can then be used to drive high impact communications.  
-
-**<img src="https://wbi.mybluemix.net/icons/retrieve-and-rank.svg?version=2" width="25" > Tradeoff Analytics** - Helps make better choices under multiple conflicting goals. Combines smart visualization and recommendations for tradeoff exploration.    
-
-**<img src="https://kpprod1.alchemyapi.com/images/vis_rec.svg" width="25"> Visual Recognition** - Find meaning in visual content! Analyze images for scenes, objects, faces, and other content. Choose a default model off the shelf, or create your own custom classifier. Find similar images within a collection. Develop smart applications that analyze the visual content of images or video frames to understand what is happening in a scene.  
+**<img src="https://kpprod1.alchemyapi.com/images/vis_rec.svg" width="25"> [Visual Recognition](https://www.ibm.com/watson/services/visual-recognition/)** - Tag, classify and search visual content using machine learning.
 
 
 
@@ -1418,7 +1339,7 @@ Be sure to check out the full list of Watson services to forwarder enhance your 
     manual_scaling:
       instances: 1
     ```
-- Make sure you've set `MONGODB_URI` or `MONGOLAB_URI` in `.env.example`
+- Make sure you've set `MONGODB_URI` in `.env.example`
 - Run the following command to deploy the `hackathon-starter` app:
 
     ```bash
@@ -1429,6 +1350,45 @@ Be sure to check out the full list of Watson services to forwarder enhance your 
 
 Changelog
 ---------
+
+### 5.0.0 (April 1, 2018)
+- NodeJS 8.0+ is now required
+- Removed dependency on Bluebird in favor of native NodeJS promisify support
+- Font awesome 5 Upgrade
+- Fix console warning about Foursquare API version
+- Added environment configs to eslint configs and cleaned up code (Thanks to @nacimgoura)
+- Fixed eslint rules to better match the project
+- Fixed Instagram API example view (@nacimgoura)
+- Adding additional code editor related files to .gitignore (@nacimgoura)
+- Upgraded syntax at various places to use ES6 syntax (Thanks to @nacimgoura)
+- Re-added travis-ci.yml (Thanks to @nacimgoura)
+- Fixed bug in Steam API when the user had no achievements (Thanks to @nacimgoura)
+- Readme and documentation improvements
+- Dependency updates
+
+### 4.4.0 (March 23, 2018)
+- Added Docker support (Thanks to @gregorysobotka, @praveenweb, @ryanhanwu).  The initial integration has also been upgraded to use NodeJS 8 and Mongo 3.6.
+- Removed dependency on async in favor of using promises (@fmcarvalho). Note that the promise support will be upgraded in the upcoming releases to remove the use of Bluebird.
+- The contact form will no longer ask for the user's name and email address if they have logged-in already
+- Adding a confirmation prompt when a user asks for their account to be deleted
+- Fixed Steam Oauth and API integration
+- Fixed Last.fm API example (@JonLim)
+- Fixed Google Map integration example (@whmsysu)
+- Fixed Twitter API integration (@shahzeb1)
+- Fixed Facebook integration/request scope (@RobTS)
+- Removed MONGOLAB_URI env var, use MONGODB_URI instead
+- Preserve the query parameters during authentication session returns (@shreedharshetty)
+- normalizeEmail options key remove_dots changed to gmail_remove_dots (@amakhnev)
+- Fixed Heroku re-deploy issue (@gballet)
+- Migrated from Jade to Pug
+- Migrated from GitHub npm package to @octokit/rest to address the related deprecation warning. See https://git.io/vNB11
+- Dependency update and upgrades
+- Updated left over port 3000 to the current default of port of 1337
+- Removed bitgo.pug since bitgo has not been supported by hackathon-starter since v4.1.0
+- Removed bitgo from api/index view (@JonLim)
+- Fixed unsecure external content by switching them to https
+- New address for the Live Demo site
+- Code formatting, text prompt, and Readme improvements
 
 ### 4.3.0 (November 6, 2016)
 - [Added new theme](http://demos.creative-tim.com/get-shit-done/index.html) by Creative Tim (Thanks @conacelelena)
@@ -1729,7 +1689,7 @@ License
 
 The MIT License (MIT)
 
-Copyright (c) 2014-2016 Sahat Yalkabov
+Copyright (c) 2016-2018 Niall O'Brien
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

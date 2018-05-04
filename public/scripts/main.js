@@ -19,7 +19,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-
 // Timeout before calling the loading indicator function. Set to 0 to disable.
 __WEBPACK_IMPORTED_MODULE_1_simple_pjax___default.a.indicateLoadAfter = 100;
 
@@ -42,10 +41,12 @@ document.addEventListener('simple-pjax-after-transition', function () {
 });
 
 $(document).ready(function () {
-  // Initialise modules here...
   console.log('jQuery version: ' + jQuery.fn.jquery);
+
+  // init modules here...
   __WEBPACK_IMPORTED_MODULE_2__modules_greetings__["a" /* Greetings */].to('awesome developer');
 
+  // init socket.io
   var socket = io.connect(window.location.hostname + ':3001');
   socket.on('greet', function (data) {
     console.log(data);

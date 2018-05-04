@@ -1,8 +1,10 @@
-const bluebird = require('bluebird')
-const crypto = bluebird.promisifyAll(require('crypto'))
-const nodemailer = require('nodemailer')
-const passport = require('passport')
-const User = require('../models/User')
+const { promisify } = require('util');
+const crypto = require('crypto');
+const nodemailer = require('nodemailer');
+const passport = require('passport');
+const User = require('../models/User');
+
+const randomBytesAsync = promisify(crypto.randomBytes);
 
 /**
  * GET /login
@@ -34,13 +36,13 @@ exports.postLogin = (req, res, next) => {
   }
 
   passport.authenticate('local', (err, user, info) => {
-    if (err) { return next(err) }
+    if (err) return next(err)
     if (!user) {
       req.flash('errors', info)
       return res.redirect('/login')
     }
     req.logIn(user, (err) => {
-      if (err) { return next(err) }
+      if (err) return next(err)
       req.flash('success', { msg: 'Success! You are logged in.' })
       res.redirect(req.session.returnTo || '/')
     })
@@ -53,7 +55,11 @@ exports.postLogin = (req, res, next) => {
  */
 exports.logout = (req, res) => {
   req.logout()
-  res.redirect('/')
+  req.session.destroy((err) => {
+    if (err) console.log('Error : Failed to destroy the session during logout.', err)
+    req.user = null
+    res.redirect('/')
+  })
 }
 
 /**
@@ -92,13 +98,13 @@ exports.postSignup = (req, res, next) => {
   })
 
   User.findOne({ email: req.body.email }, (err, existingUser) => {
-    if (err) { return next(err) }
+    if (err) return next(err)
     if (existingUser) {
       req.flash('errors', { msg: 'Account with that email address already exists.' })
       return res.redirect('/signup')
     }
     user.save((err) => {
-      if (err) { return next(err) }
+      if (err) return next(err)
       req.logIn(user, (err) => {
         if (err) {
           return next(err)
@@ -135,7 +141,7 @@ exports.postUpdateProfile = (req, res, next) => {
   }
 
   User.findById(req.user.id, (err, user) => {
-    if (err) { return next(err) }
+    if (err) return next(err)
     user.email = req.body.email || ''
     user.profile.name = req.body.name || ''
     user.profile.gender = req.body.gender || ''
@@ -171,10 +177,10 @@ exports.postUpdatePassword = (req, res, next) => {
   }
 
   User.findById(req.user.id, (err, user) => {
-    if (err) { return next(err) }
+    if (err) return next(err)
     user.password = req.body.password
     user.save((err) => {
-      if (err) { return next(err) }
+      if (err) return next(err)
       req.flash('success', { msg: 'Password has been changed.' })
       res.redirect('/account')
     })
@@ -187,7 +193,7 @@ exports.postUpdatePassword = (req, res, next) => {
  */
 exports.postDeleteAccount = (req, res, next) => {
   User.remove({ _id: req.user.id }, (err) => {
-    if (err) { return next(err) }
+    if (err) return next(err)
     req.logout()
     req.flash('info', { msg: 'Your account has been deleted.' })
     res.redirect('/')
@@ -199,13 +205,13 @@ exports.postDeleteAccount = (req, res, next) => {
  * Unlink OAuth provider.
  */
 exports.getOauthUnlink = (req, res, next) => {
-  const provider = req.params.provider
+  const { provider } = req.params;
   User.findById(req.user.id, (err, user) => {
-    if (err) { return next(err) }
+    if (err) return next(err)
     user[provider] = undefined
     user.tokens = user.tokens.filter(token => token.kind !== provider)
     user.save((err) => {
-      if (err) { return next(err) }
+      if (err) return next(err)
       req.flash('info', { msg: `${provider} account has been unlinked.` })
       res.redirect('/account')
     })
@@ -224,7 +230,7 @@ exports.getReset = (req, res, next) => {
     .findOne({ passwordResetToken: req.params.token })
     .where('passwordResetExpires').gt(Date.now())
     .exec((err, user) => {
-      if (err) { return next(err) }
+      if (err) return next(err)
       if (!user) {
         req.flash('errors', { msg: 'Password reset token is invalid or has expired.' })
         return res.redirect('/forgot')
@@ -264,14 +270,14 @@ exports.postReset = (req, res, next) => {
         user.passwordResetExpires = undefined
         return user.save().then(() => new Promise((resolve, reject) => {
           req.logIn(user, (err) => {
-            if (err) { return reject(err) }
+            if (err) return reject(err)
             resolve(user)
           })
         }))
       })
 
   const sendResetPasswordEmail = (user) => {
-    if (!user) { return }
+    if (!user) return
     const transporter = nodemailer.createTransport({
       service: 'SendGrid',
       auth: {
@@ -325,9 +331,8 @@ exports.postForgot = (req, res, next) => {
     return res.redirect('/forgot')
   }
 
-  const createRandomToken = crypto
-    .randomBytesAsync(16)
-    .then(buf => buf.toString('hex'))
+  const createRandomToken = randomBytesAsync(16)
+    .then(buf => buf.toString('hex'));
 
   const setRandomToken = token =>
     User
@@ -344,7 +349,7 @@ exports.postForgot = (req, res, next) => {
       })
 
   const sendForgotPasswordEmail = (user) => {
-    if (!user) { return }
+    if (!user) return
     const token = user.passwordResetToken
     const transporter = nodemailer.createTransport({
       service: 'SendGrid',

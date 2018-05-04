@@ -1,7 +1,7 @@
 /**
  * Controllers (route handlers).
  */
-const homeController = require('../controllers/home')``
+const homeController = require('../controllers/home')
 const userController = require('../controllers/user')
 const apiController = require('../controllers/api')
 const contactController = require('../controllers/contact')
