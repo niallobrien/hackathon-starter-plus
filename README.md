@@ -61,6 +61,9 @@ pattern](https://toddmotto.com/mastering-the-module-pattern/).
 the case with Sass middleware using the default Hackathon Starter setup).
 
 ### What To Remove
+
+**Note:** Line locations may vary based on what you have added/removed.
+
 `npm uninstall jquery node-sass node-sass-middleware --save`
 
 **Delete these folders:**  
@@ -68,8 +71,7 @@ the case with Sass middleware using the default Hackathon Starter setup).
 `public/js`  
 `public/webfonts`  
 
-Open `app.js` at the top level of your project and remove all references to sass at *line 20* and the 
-middleware shown below from *lines 67-70*
+Open `app.js` at the top level of your project and remove *line 20* and the middleware shown below from *lines 66-69*
 ```javascript
 app.use(sass({
   src: path.join(__dirname, 'public'),
@@ -78,6 +80,9 @@ app.use(sass({
 ```
 
 ### What To Add
+
+**Note:** Line locations may vary based on what you have added/removed.
+
 `npm install bootstrap glob-all jquery laravel-mix popper.js purge-webpack-plugin tooltip.js simple-pjax 
 @fortawesome/fontawesome @fortawesome/fontawesome-free-webfonts --save-dev`
 
@@ -86,9 +91,8 @@ Copy the `.gitignore` file from this repo to your project.
 Copy the `.webpack.mix.js` file from this repo to your project.
 
 We now need to modify our app to handle development and production assets as the file names will be different.  
-In `app.js` (where we create our Express server), in between lines *64* and *65*, just after the 
-*Express configuration* section, but before where Express Status Monitor is setup, add the following:
-
+In `app.js` (where we create our Express server), in between lines *64* and *65* 
+(after `app.set('view engine', 'pug');`), add the following:
 ```javascript
 // Middleware for Jade/Pug custom filter for use with Laravel Mix
 app.use((req, res, next) => {
@@ -106,9 +110,12 @@ app.use((req, res, next) => {
 })
 ```
 
-Next, add `:mix(css) '/assets/styles/app.css'` to the `head` section of your layout file and at the bottom of the 
-`body` section (before the Google Analytics script block) add:
+In `views/layout.pug` replace *line 11* with 
+```pug
+:mix(css) '/assets/styles/app.css'
+```
 
+At *line 25* add
 ```pug
 :mix(js) '/assets/scripts/manifest.js'
 :mix(js) '/assets/scripts/vendor.js'
@@ -159,11 +166,19 @@ output in the `public` directory. Be sure to deploy these files.
 Websocket Support
 --------------
 
+**Note:** Line locations may vary based on what you have added/removed.
+
 ### What To Add
 `npm install socket.io --save`
 
 There's a few pieces to be added to `app.js` to add websocket support.  
-Just before *line 50* where the connection to MongoDB is established, add
+
+Find this at *line 46*
+```javascript
+const app = express();
+```
+
+Add this after *line 46*
 ```javascript
 /**
  * Create Express & Socket.io servers.
@@ -174,17 +189,23 @@ const server = require('http').Server(app)
 const io = require('socket.io')(socketIoPort)
 ```
 
-Find this line
+Find this at *line 65*
 ```javascript
 app.use(expressStatusMonitor());
 ```
+
 Replace with this:
 ```javascript
 app.use(expressStatusMonitor({websocket: io, port: socketIoPort}))
 ```
 
-At *line 115*
-```app.use(lusca.xssProtection(true))```
+Find this at *line 93*
+```javascript
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
+});
+```
 
 Replace with this:
 ```javascript
@@ -197,7 +218,7 @@ app.use((req, res, next) => {
 })
 ```
 
-And finally, after `app.use(errorHandler())` at *line 147* but before the Express server is started, add:
+At *line 227* add
 ```javascript
 /**
  * Socket.io.
