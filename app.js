@@ -49,7 +49,6 @@ const io = require('socket.io')(socketIoPort)
 /**
  * Connect to MongoDB.
  */
-mongoose.Promise = global.Promise
 mongoose.connect(process.env.MONGODB_URI)
 mongoose.connection.on('error', (err) => {
   console.error(err)
@@ -94,7 +93,7 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
   secret: process.env.SESSION_SECRET,
-  cookie: { maxAge: 1209600000 }, // two weeks in milliseconds
+  cookie: {maxAge: 1209600000}, // two weeks in milliseconds
   store: new MongoStore({
     url: process.env.MONGODB_URI,
     autoReconnect: true,
@@ -113,10 +112,11 @@ app.use((req, res, next) => {
 })
 app.use(lusca.xframe('SAMEORIGIN'))
 app.use(lusca.xssProtection(true))
+app.disable('x-powered-by');
 app.use((req, res, next) => {
   // provide host to construct url to socket.io (port 3001)
-  res.locals.hostname = req.protocol + '://' + req.hostname
-  res.locals.fullHostname = req.protocol + '://' + req.hostname + ':' + req.app.settings.port
+  res.locals.hostname = process.env.BASE_URL.slice(0, -5) || req.protocol + '://' + req.hostname
+  res.locals.fullHostname = process.env.BASE_URL || req.protocol + '://' + req.hostname + ':' + req.app.settings.port
   res.locals.user = req.user
   next()
 })
@@ -144,7 +144,10 @@ require('./config/routes')(app, passport, passportConfig, upload)
 /**
  * Error Handler.
  */
-app.use(errorHandler())
+if (process.env.NODE_ENV === 'development') {
+  // only use in development
+  app.use(errorHandler())
+}
 
 /**
  * Socket.io.
