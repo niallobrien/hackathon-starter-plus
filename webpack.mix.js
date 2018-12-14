@@ -28,7 +28,7 @@ class BootstrapExtractor {
 
 mix
   .options({ processCssUrls: false, publicPath: 'public' })
-  .copyDirectory('node_modules/@fortawesome/fontawesome-free-webfonts/webfonts', 'public/fonts')
+  .copyDirectory('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/fonts')
   .autoload({
     jquery: ['$', 'window.jQuery', 'jQuery', 'jquery'],
     Popper: ['window.Popper'],
