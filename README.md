@@ -83,8 +83,8 @@ app.use(sass({
 
 **Note:** Line locations may vary based on what you have added/removed.
 
-`npm install bootstrap glob-all jquery laravel-mix popper.js purge-webpack-plugin tooltip.js simple-pjax 
-@fortawesome/fontawesome @fortawesome/fontawesome-free-webfonts --save-dev`
+`npm install cross-env bootstrap glob-all jquery laravel-mix popper.js purgecss-webpack-plugin tooltip.js simple-pjax 
+@fortawesome/fontawesome @ladjs/bootstrap-social --no-optional --save-dev`
 
 Copy the `assets` folder from this repo to your project.  
 Copy the `.gitignore` file from this repo to your project.
